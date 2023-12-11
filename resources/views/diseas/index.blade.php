@@ -29,7 +29,7 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Create At</th>
+                        {{-- <th scope="col">Create At</th> --}}
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -38,7 +38,7 @@
                         <tr>
                             <th scope="row">{{ $diseas->id }}</th>
                             <td>{{ $diseas->diseas_name }}</td>
-                            <td>{{ $diseas->created_at }}</td>
+                            {{-- <td>{{ $diseas->created_at }}</td> --}}
                             <td>
                                 <a href="#" class="icon-copy fa fa-pencil-square" aria-hidden="true"
                                     data-toggle="modal" data-target="#edit-{{ $diseas->id }}"></a>

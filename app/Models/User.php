@@ -31,9 +31,9 @@ class User extends Authenticatable
     public function usertype(){
         return $this->belongsTo(Usertype::class,'user_type_id');
     }
-    public function receptionist()
+    public function receptionistes()
     {
-        return $this->belongsTo(Receptionist::class);
+        return $this->hasMany(Receptionist::class);
     }
 
     /**

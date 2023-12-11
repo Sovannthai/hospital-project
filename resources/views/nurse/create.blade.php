@@ -56,7 +56,7 @@
                 </div>
                 <div class="form-group col-3">
                     <label for="">Dr.</label>
-                    <select name="user_doctor_id" id="" class="form-control">
+                    <select name="doctor_id" id="" class="form-control">
                         <option value="">Select Dr...</option>
                         @foreach ($doctors as $doctor)
                         <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="form-group col-3">
                     <label for="">Nrs.</label>
-                    <select name="user_nurse_id" id="" class="form-control">
+                    <select name="nurse_id" id="" class="form-control">
                         <option value="">Select Dr...</option>
                         @foreach ($nurses as $nurse)
                         <option value="{{ $nurse->id }}">{{ $nurse->name }}</option>

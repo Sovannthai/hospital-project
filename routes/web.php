@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DiseasController;
 use App\Http\Controllers\UsertypeController;
 use App\Http\Controllers\CategorylaboController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\NurseController;
 use App\Http\Controllers\ReceptionistController;
 
 /*
@@ -44,3 +46,9 @@ Route::get('/diseas',[DiseasController::class,'index'])->name('diseas.index');
 Route::post('/diseas',[DiseasController::class,'store'])->name('diseas.store');
 Route::put('/diseas/update/{id}',[DiseasController::class,'update'])->name('diseas.update');
 Route::get('/diseas/delete/{id}',[DiseasController::class,'destroy'])->name('diseas.destroy');
+//Recep Route
+Route::resource('/recep',ReceptionistController::class);
+//Nurse Route
+Route::resource('/nurse',NurseController::class);
+//Doctor Route
+Route::resource('/doctor',DoctorController::class);

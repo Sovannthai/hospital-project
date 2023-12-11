@@ -972,7 +972,7 @@ p {
 
 .btn-group-sm>.btn,
 .btn-sm {
-    padding: .4rem .8rem;
+    /* padding: .4rem .8rem; */
     font-size: 14px
 }
 

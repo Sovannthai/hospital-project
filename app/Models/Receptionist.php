@@ -12,10 +12,18 @@ class Receptionist extends Model
 
     public function disease()
     {
-        return $this->hasMany(Diseas::class, 'disease_id');
+        return $this->belongsTo(Diseas::class, 'disease_id');
     }
     public function user()
     {
-        return $this->hasMany(User::class,'doctor_id', 'nurse_id');
+        return $this->belongsTo(User::class, 'user_doctor_id', 'user_nurse_id');
+    }
+    public function doctor()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function nurse()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
