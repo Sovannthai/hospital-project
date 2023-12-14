@@ -4,8 +4,8 @@
 @section('content')
 <style>
     .table {
-        display: inline-block;
-        overflow-x: auto;
+        /* display: inline-block; */
+        /* overflow-x: auto; */
         white-space: nowrap;
     }
 
@@ -34,7 +34,7 @@
 @endif
 <div class="card">
     <div class="card-body">
-        <div class="table-responsive-sm">
+        <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead class="table-dark">
                     <tr>

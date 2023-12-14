@@ -10,7 +10,7 @@
 </style>
 <div class="card">
     <div class="card-body">
-        <form action="{{ route('doctor.store') }}" method="POST">
+        <form action="{{ route('pataint.store') }}" method="POST">
             @csrf
             <div class="row">
                 <div class="form-group col-3">
@@ -42,36 +42,6 @@
                     @error('phone')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-4">
-                    <label for="">Disease</label>
-                    <select name="disease_id" id="" class="form-control">
-                        <option value="">Select Desease...</option>
-                        @foreach ($disease as $diseas)
-                        <option value="{{ $diseas->id }}">{{ $diseas->diseas_name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group col-4">
-                    <label for="">Dr.</label>
-                    <select name="doctor_id" id="" class="form-control">
-                        <option value="">Select Dr...</option>
-                        @foreach ($doctors as $doctor)
-                        <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group col-4">
-                    <label for="">Status</label>
-                    <select name="status" id="" class="form-control">
-                        <option value="">Select..</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Processing">Processing</option>
-                        <option value="Completed">Completed</option>
-                        <option value="Canceled">Canceled</option>
-                    </select>
                 </div>
             </div>
             <div class="form-group">

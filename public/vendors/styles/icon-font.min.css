@@ -10234,7 +10234,10 @@
 }
 
 .dw-calendar-11:before {
-    content: "\ec35"
+    content: "\ec35";
+    font-size: 20px;
+    position: relative;
+    left: -45px;
 }
 
 .dw-help:before {

@@ -16,14 +16,6 @@ class Receptionist extends Model
     }
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_doctor_id', 'user_nurse_id');
-    }
-    public function doctor()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-    public function nurse()
-    {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'doctor_id', 'nurse_id');
     }
 }

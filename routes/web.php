@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -8,7 +9,9 @@ use App\Http\Controllers\UsertypeController;
 use App\Http\Controllers\CategorylaboController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\NurseController;
+use App\Http\Controllers\PataintController;
 use App\Http\Controllers\ReceptionistController;
+use App\Models\Appointment;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +51,13 @@ Route::put('/diseas/update/{id}',[DiseasController::class,'update'])->name('dise
 Route::get('/diseas/delete/{id}',[DiseasController::class,'destroy'])->name('diseas.destroy');
 //Recep Route
 Route::resource('/recep',ReceptionistController::class);
-//Nurse Route
-Route::resource('/nurse',NurseController::class);
-//Doctor Route
-Route::resource('/doctor',DoctorController::class);
+//Pataint Route
+Route::resource('pataint',PataintController::class);
+//Appointment Route
+// Route::resource('appointment',AppointmentController::class);
+Route::get('/appointment',[AppointmentController::class,'index'])->name('appointment.index');
+Route::get('/appointment/create',[AppointmentController::class,'create'])->name('appointment.create');
+Route::post('/appointment',[AppointmentController::class,'store'])->name('appointment.store');
+Route::get('/appointment/edit/{id}',[AppointmentController::class,'edit'])->name('appointment.edit');
+Route::put('/appointment/update/{id}',[AppointmentController::class,'update'])->name('appointment.update');
+Route::delete('/appointment/delete/{id}',[AppointmentController::class,'destroy'])->name('appointment.destroy');

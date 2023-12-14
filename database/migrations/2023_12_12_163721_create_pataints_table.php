@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('doctors', function (Blueprint $table) {
+        Schema::create('pataints', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->string('gender',)->default('Man');
+            $table->string('gender')->default('Man');
             $table->date('dob');
             $table->string('phone', 15);
-            $table->integer('disease_id');
-            $table->integer('doctor_id');
             $table->longText('address');
-            $table->enum('status', ['canceled', 'pending', 'processing', 'completed'])->default('pending');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('doctors');
+        Schema::dropIfExists('pataints');
     }
 };

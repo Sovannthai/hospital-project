@@ -34,12 +34,12 @@
                 </li>
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="icon-copy fa fa-address-book-o" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Receptionist</span>
+                        <span class="icon-copy fa fa-address-book-o" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Pataint</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('recep.index') }}" class="@if (request()->routeIs('recep.index'))active @endif"><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Patient</a></li>
+                        <li><a href="{{ route('pataint.index') }}" class="@if (request()->routeIs('pataint.index'))active @endif"><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Patient</a></li>
                         <li>
-                            <a href="{{ route('recep.create') }}" class="@if (request()->routeIs('recep.create'))active @endif"><span class="icon-copy fa fa-plus-circle" aria-hidden="true"></span>Add Patient</a>
+                            <a href="{{ route('pataint.create') }}" class="@if (request()->routeIs('pataint.create'))active @endif"><span class="icon-copy fa fa-plus-circle" aria-hidden="true"></span>Add Patient</a>
                         </li>
                     </ul>
                 </li>
@@ -54,26 +54,16 @@
                         </li>
                     </ul>
                 </li> --}}
-                <li>
-                    <a href="{{ route('nurse.index') }}" class="dropdown-toggle no-arrow @if (request()->routeIs('nurse.index'))active @endif">
-                        <span class="icon-copy fa fa-user-plus" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Nurse</span>
-                    </a>
-                </li>
-                {{-- <li class="dropdown">
+                <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="icon-copy fa fa-user-md" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Doctor</span>
+                        <span class="icon-copy dw dw-calendar-11"></span><span class="mtext" style="position: relative; left: -20px;">Appointment</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('doctor.index') }}"><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Appointment</a></li>
+                        <li><a href="{{ route('appointment.index') }}" class="@if (request()->routeIs('appointment.index'))active @endif"><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Appointment</a></li>
                         <li>
-                            <a href="{{ route('doctor.create') }}"><span class="icon-copy fa fa-plus-circle" aria-hidden="true"></span>Add Patient</a>
+                            <a href="{{ route('appointment.create') }}" class="@if (request()->routeIs('appointment.create'))active @endif"><span class="icon-copy fa fa-plus-circle" aria-hidden="true"></span>Add Patient</a>
                         </li>
                     </ul>
-                </li> --}}
-                <li>
-                    <a href="{{ route('doctor.index') }}" class="dropdown-toggle no-arrow @if (request()->routeIs('doctor.index'))active @endif">
-                        <span class="icon-copy fa fa-user-md" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Doctor</span>
-                    </a>
                 </li>
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">

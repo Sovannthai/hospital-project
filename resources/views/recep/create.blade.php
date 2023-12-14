@@ -13,14 +13,14 @@
         <form action="{{ route('recep.store') }}" method="POST">
             @csrf
             <div class="row">
-                <div class="form-group col-3">
+                <div class="form-group col-4">
                     <label for="">Name</label>
                     <input type="text" name="name" class="form-control">
                     @error('name')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="form-group col-3">
+                <div class="form-group col-4">
                     <label for="">Gender</label>
                     <select name="gender" id="" class="form-control">
                         <option value="">Select..</option>
@@ -29,23 +29,23 @@
                         <option value="Optional">No more...</option>
                     </select>
                 </div>
-                <div class="form-group col-3">
+                <div class="form-group col-4">
                     <label for="">DOB</label>
                     <input type="date" name="dob" class="form-control">
                     @error('dob')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="form-group col-3">
+            </div>
+            <div class="row">
+                <div class="form-group col-4">
                     <label for="">Phone</label>
                     <input type="Number" name="phone" class="form-control">
                     @error('phone')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-3">
+                <div class="form-group col-4">
                     <label for="">Disease</label>
                     <select name="disease_id" id="" class="form-control">
                         <option value="">Select Desease...</option>
@@ -54,25 +54,31 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group col-3">
+                <div class="form-group col-4">
                     <label for="">Dr.</label>
-                    <select name="user_doctor_id" id="" class="form-control">
+                    <select name="doctor_id" id="" class="form-control">
                         <option value="">Select Dr...</option>
                         @foreach ($doctors as $doctor)
                         <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group col-3">
+            </div>
+            <div class="row">
+                <div class="form-group col-4">
                     <label for="">Nrs.</label>
-                    <select name="user_nurse_id" id="" class="form-control">
+                    <select name="nurse_id" id="" class="form-control">
                         <option value="">Select Dr...</option>
                         @foreach ($nurses as $nurse)
                         <option value="{{ $nurse->id }}">{{ $nurse->name }}</option>
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group col-3">
+                <div class="form-group col-4">
+                    <label for="">Appointment Date</label>
+                    <input type="datetime-local" class="form-control" name="appointment_date">
+                </div>
+                <div class="form-group col-4">
                     <label for="">Status</label>
                     <select name="status" id="" class="form-control">
                         <option value="">Select..</option>

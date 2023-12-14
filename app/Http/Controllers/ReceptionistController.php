@@ -40,38 +40,13 @@ class ReceptionistController extends Controller
         $recep->dob = $request->dob;
         $recep->phone = $request->phone;
         $recep->disease_id = $request->disease_id;
-        $recep->user_doctor_id = $request->user_doctor_id;
-        $recep->user_nurse_id = $request->user_nurse_id;
+        $recep->doctor_id = $request->doctor_id;
+        $recep->nurse_id = $request->nurse_id;
+        $recep->appointment_date = $request->appointment_date;
         $recep->address = $request->address;
         $recep->status = $request->status;
         // dd($recep);
         $recep->save();
-        if ($request->user_doctor_id) {
-            $doctor = new Doctor();
-            $doctor->name = $request->name;
-            $doctor->gender = $request->gender;
-            $doctor->dob = $request->dob;
-            $doctor->phone = $request->phone;
-            $doctor->disease_id = $request->disease_id;
-            $doctor->user_doctor_id = $request->user_doctor_id;
-            $doctor->address = $request->address;
-            $doctor->status = $request->status;
-            // dd($doctor);
-            $doctor->save();
-        }
-        elseif ($request->user_nurse_id) {
-            $nurse = new Nurse();
-            $nurse->name = $request->name;
-            $nurse->gender = $request->gender;
-            $nurse->dob = $request->dob;
-            $nurse->phone = $request->phone;
-            $nurse->disease_id = $request->disease_id;
-            $nurse->user_nurse_id = $request->user_nurse_id;
-            $nurse->address = $request->address;
-            $nurse->status = $request->status;
-            $nurse->save();
-        }
-
         return redirect()->route('recep.index')->with('store', 'Your record has been added successfully!');
     }
 
@@ -97,38 +72,12 @@ class ReceptionistController extends Controller
         $recep->dob = $request->dob;
         $recep->phone = $request->phone;
         $recep->disease_id = $request->disease_id;
-        $recep->user_doctor_id = $request->user_doctor_id;
-        $recep->user_nurse_id = $request->user_nurse_id;
+        $recep->doctor_id = $request->doctor_id;
+        $recep->nurse_id = $request->nurse_id;
+        $recep->appointment_date = $request->appointment_date;
         $recep->address = $request->address;
         $recep->status = $request->status;
         $recep->save();
-        if ($request->user_doctor_id) {
-            $doctor = Doctor::where('user_doctor_id',$request->user_doctor_id)->first();
-            // dd($doctor);
-            $doctor->name = $request->name;
-            $doctor->gender = $request->gender;
-            $doctor->dob = $request->dob;
-            $doctor->phone = $request->phone;
-            $doctor->disease_id = $request->disease_id;
-            $doctor->user_doctor_id = $request->user_doctor_id;
-            $doctor->address = $request->address;
-            $doctor->status = $request->status;
-            $doctor->save();
-        }
-        elseif ($request->user_nurse_id) {
-            $nurse = Nurse::where('user_nurse_id',$request->user_nurse_id)->first();
-            // dd($request->user_nurse_id);
-            $nurse->name = $request->name;
-            $nurse->gender = $request->gender;
-            $nurse->dob = $request->dob;
-            $nurse->phone = $request->phone;
-            $nurse->disease_id = $request->disease_id;
-            $nurse->user_nurse_id = $request->user_nurse_id;
-            $nurse->address = $request->address;
-            $nurse->status = $request->status;
-            // dd($nurse);
-            $nurse->save();
-        }
         return redirect()->route('recep.index')->with('update', 'Your recorde has updated successfully !');
     }
 
