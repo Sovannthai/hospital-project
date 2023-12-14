@@ -10,7 +10,7 @@
         </div>
     @endif
     @if (session()->has('update'))
-        <div class="alert alert-success alert-dismissible">
+        <div class="alert alert-info alert-dismissible">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             <strong>Success!</strong> {{ session('update') ?? '' }}
         </div>
@@ -27,24 +27,23 @@
             <table class="table table-bordered table-hover">
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">ID</th>
                         <th scope="col">Name</th>
-                        {{-- <th scope="col">Create At</th> --}}
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($diseases as $diseas)
                         <tr>
-                            <th scope="row">{{ $diseas->id }}</th>
                             <td>{{ $diseas->diseas_name }}</td>
-                            {{-- <td>{{ $diseas->created_at }}</td> --}}
                             <td>
-                                <a href="#" class="icon-copy fa fa-pencil-square" aria-hidden="true"
-                                    data-toggle="modal" data-target="#edit-{{ $diseas->id }}"></a>
+                                <a href="#" class="btn btn-primary" aria-hidden="true"
+                                    data-toggle="modal" data-target="#edit-{{ $diseas->id }}"><i class="icon-copy dw dw-edit1"></i></a>
                                 @include('diseas.edit')
-                                <a href="{{ route('diseas.destroy', ['id' => $diseas->id]) }}" class="icon-copy fa fa-trash"
-                                    aria-hidden="true"></a>
+                                <form action="{{ route('diseas.destroy',['id'=>$diseas->id]) }}" method="POST" class="d-inline-block " id="delete-form-{{ $diseas->id }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $diseas->id }})"><i class="icon-copy dw dw-trash1"></i></button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -56,4 +55,22 @@
             </div>
         </div>
     </div>
+    <script>
+        function confirmDelete(disease) {
+            Swal.fire({
+                title: "Are you sure?"
+                , text: "You want to delete this record !"
+                , icon: "warning"
+                , showCancelButton: true
+                , confirmButtonColor: "#3085d6"
+                , cancelButtonColor: "#d33"
+                , confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + disease).submit();
+                }
+            });
+        }
+
+    </script>
 @endsection

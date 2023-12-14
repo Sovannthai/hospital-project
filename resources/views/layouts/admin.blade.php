@@ -62,7 +62,11 @@
         })(window, document, "script", "dataLayer", "GTM-NXZMQSS");
 
     </script>
-    <!-- End Google Tag Manager -->
+    <style>
+        .form-control{
+            border-radius: 0;
+        }
+    </style>
 </head>
 
 <body>

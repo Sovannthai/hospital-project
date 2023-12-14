@@ -4,6 +4,27 @@
 @section('content')
 <button href="" class="btn btn-primary mb-2" data-toggle="modal" data-target="#create">Add New</button>
 @include('usermanagement.usertype.create')
+@if (session()->has('store'))
+<div class="alert alert-success alert-dismissible">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Success!</strong> {{ session('store') ?? '' }}
+</div>
+</div>
+@endif
+@if (session()->has('update'))
+<div class="alert alert-info alert-dismissible">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Success!</strong> {{ session('update') ?? '' }}
+</div>
+</div>
+@endif
+@if (session()->has('delete'))
+<div class="alert alert-danger alert-dismissible">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Success!</strong> {{ session('delete') ?? '' }}
+</div>
+</div>
+@endif
     <div class="card">
         <div class="card-body">
             <table class="table table-bordered table-hover">
@@ -18,9 +39,13 @@
                     <tr>
                         <td>{{ $usertype->type_name }}</td>
                         <td>
-                            <a href="#" class="icon-copy fa fa-pencil-square" aria-hidden="true" data-toggle="modal" data-target="#edit-{{ $usertype->id }}"></a>
+                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#edit-{{ $usertype->id }}"><i class="icon-copy dw dw-edit1"></i></a>
                             @include('usermanagement.usertype.edit')
-                            <a href="{{ route('usermanagement.usertype.destroy',['id'=>$usertype->id]) }}" class="icon-copy fa fa-trash" aria-hidden="true"></a>
+                            <form action="{{ route('usermanagement.usertype.destroy',['id'=>$usertype->id]) }}" method="POST" class="d-inline-block " id="delete-form-{{ $usertype->id }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $usertype->id }})"><i class="icon-copy dw dw-trash1"></i></button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
@@ -28,4 +53,22 @@
             </table>
         </div>
     </div>
+    <script>
+        function confirmDelete(usertype) {
+            Swal.fire({
+                title: "Are you sure?"
+                , text: "You want to delete this record !"
+                , icon: "warning"
+                , showCancelButton: true
+                , confirmButtonColor: "#3085d6"
+                , cancelButtonColor: "#d33"
+                , confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + usertype).submit();
+                }
+            });
+        }
+
+    </script>
 @endsection

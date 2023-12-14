@@ -771,7 +771,7 @@ p {
 }
 
 .form-group {
-    margin-bottom: 20px
+    /* margin-bottom: 20px */
 }
 
 .form-group>label {
@@ -786,7 +786,7 @@ p {
     font-family: 'Inter', sans-serif;
     color: #131e22;
     font-weight: 400;
-    height: 45px;
+    /* height: 45px; */
     border-color: #d4d4d4;
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out

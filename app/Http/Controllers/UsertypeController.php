@@ -32,7 +32,7 @@ class UsertypeController extends Controller
         $usertype = new Usertype;
         $usertype->type_name = $request->input('type_name');
         $usertype->save();
-        return redirect()->route('usermanagement.usertype.index');
+        return redirect()->route('usermanagement.usertype.index')->with('store','Usertype create successfully !');
     }
 
     /**
@@ -59,7 +59,7 @@ class UsertypeController extends Controller
         $usertype = Usertype::find($id);
         $usertype->type_name = $request->input('type_name');
         $usertype->save();
-        return redirect()->route('usermanagement.usertype.index');
+        return redirect()->route('usermanagement.usertype.index')->with('update','Usertype update successfully !');
     }
 
     /**
@@ -69,6 +69,6 @@ class UsertypeController extends Controller
     {
         $usertype = Usertype::find($id);
         $usertype->delete();
-        return redirect()->route('usermanagement.usertype.index');
+        return redirect()->route('usermanagement.usertype.index')->with('delete','Usertype delete successfully !');
     }
 }

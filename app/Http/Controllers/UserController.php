@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Models\Users;
 use App\Models\Usertype;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -34,10 +35,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $users = new User;
-        $users->prefix = $request->prefix;
-        $users->name = $request->name;
-        $users->user_type_id = $request->user_type_id;
-        $users->salary = $request->salary;
+        $users->name = $request->input('name');
+        $users->email = $request->input('email');
+        $users->password = $request->input('password');
+        $users->prefix = $request->input('prefix');
+        $users->user_type_id = $request->input('user_type_id');
+        $users->salary = $request->input('salary');
 
         if ($request->has('image')) {
             $image = $request->file('image');
@@ -48,7 +51,7 @@ class UserController extends Controller
         }
 
         $users->save();
-        return redirect()->route('usermanagement.user.index');
+        return redirect()->route('usermanagement.user.index')->with('store','User create successfully !');
     }
 
     /**
@@ -75,8 +78,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        $user->prefix = $request->input('prefix');
         $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->prefix = $request->input('prefix');
         $user->user_type_id = $request->input('user_type_id');
         $user->salary = $request->input('salary');
 
@@ -90,7 +95,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('usermanagement.user.index');
+        return redirect()->route('usermanagement.user.index')->with('update','User update successfully !');
     }
 
     /**
@@ -105,7 +110,7 @@ class UserController extends Controller
         }
 
         if ($user->delete()) {
-            return redirect()->route('usermanagement.user.index')->with('success', 'User deleted successfully.');
+            return redirect()->route('usermanagement.user.index')->with('delete', 'User deleted successfully.');
         } else {
             return redirect()->back()->with('error', 'Failed to delete user.');
         }

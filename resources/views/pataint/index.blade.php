@@ -87,7 +87,7 @@
     function confirmDelete(pataintId) {
         Swal.fire({
             title: "Are you sure?"
-            , text: "You want to delete thid record !"
+            , text: "You want to delete this record !"
             , icon: "warning"
             , showCancelButton: true
             , confirmButtonColor: "#3085d6"

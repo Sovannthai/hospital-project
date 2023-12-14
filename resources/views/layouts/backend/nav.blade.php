@@ -80,12 +80,14 @@
         </div> --}}
         <div class="user-info-dropdown">
             <div class="dropdown">
+                @auth
                 <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                     <span class="user-icon">
-                        <img src="{{ asset('uploads/logo/user.png') }}" alt />
+                        <img src="{{ asset('uploads/users/2023-11-06-65486f4c69e1d.png') }}" alt />
                     </span>
-                    <span class="user-name">Noun Sreypech</span>
+                    <span class="user-name">{{ auth()->user()->name }}</span>
                 </a>
+                @endauth
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                     {{-- <a class="dropdown-item" href="#"><i class="dw dw-user1"></i>
                         Profile</a> --}}
