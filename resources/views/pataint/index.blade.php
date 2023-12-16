@@ -77,8 +77,7 @@
                 @endforelse
             </table>
             <div class="d-flex">
-                {{-- {!! $forreceps->links() !!} --}}
-                {{-- {!! $forreceps->appends(['sort' => 'name'])->links() !!} --}}
+                {!! $pataints->appends(['sort' => 'pataints'])->links() !!}
             </div>
         </div>
     </div>

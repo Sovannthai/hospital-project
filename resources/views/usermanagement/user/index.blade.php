@@ -67,6 +67,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="d-flex">
+            {!! $users->appends(['sort' => 'users'])->links() !!}
+        </div>
     </div>
 </div>
 <script>

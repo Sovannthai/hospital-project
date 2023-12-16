@@ -18,11 +18,12 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $appointments = Appointment::all();
+        // $appointments = Appointment::all();
         $diseases = Diseas::all();
         $pataints = Pataint::all();
         $users = User::all();
-        return view('appointment.index',compact('appointments','diseases','pataints','users'));
+        $appointments = Appointment::paginate(5);
+        return view('appointment.index', compact('appointments', 'diseases', 'pataints', 'users'));
     }
 
     /**
@@ -36,7 +37,7 @@ class AppointmentController extends Controller
         // $nurses = User::with('usertype')->where('user_type_id', 2)->get();
         $doctors = User::with('usertype')->where('user_type_id', 1)->get();
 
-        return view('appointment.create',compact('appointment','diseases','pataints','doctors'));
+        return view('appointment.create', compact('appointment', 'diseases', 'pataints', 'doctors'));
     }
 
     /**
@@ -44,18 +45,15 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $appointment = new Appointment();
         $appointment->pataint_id = $request->pataint_id;
         $appointment->disease_id = $request->disease_id;
         $appointment->doctor_id = $request->doctor_id;
-        // $appointment->nurse_id = $request->nurse_id;
         $appointment->appointment_date = $request->appointment_date;
         $appointment->status = $request->status;
         $appointment->created_by = auth()->user()->id;
-        // dd($appointment);
         $appointment->save();
-        return redirect()->route('appointment.index')->with('store','Appointment create successfully !');
+        return redirect()->route('appointment.index')->with('store', 'Appointment create successfully !');
     }
 
     /**
@@ -75,7 +73,7 @@ class AppointmentController extends Controller
         $diseases = Diseas::all();
         $pataints = Pataint::all();
         $doctors = User::with('usertype')->where('user_type_id', 1)->get();
-        return view('appointment.edit',compact('appointment','diseases','pataints','doctors'));
+        return view('appointment.edit', compact('appointment', 'diseases', 'pataints', 'doctors'));
     }
 
     /**
@@ -92,7 +90,7 @@ class AppointmentController extends Controller
         $appointment->created_by = auth()->user()->id;
         $appointment->save();
 
-        return redirect()->route('appointment.index')->with('update','Appointment update successfully !');
+        return redirect()->route('appointment.index')->with('update', 'Appointment update successfully !');
     }
 
     /**
@@ -101,9 +99,8 @@ class AppointmentController extends Controller
     public function destroy(string $id)
     {
         $appointment = Appointment::find($id);
-        if ($appointment->delete())
-        {
-            return redirect()->route('appointment.index')->with('delete','Appointment has delete successfully !');
+        if ($appointment->delete()) {
+            return redirect()->route('appointment.index')->with('delete', 'Appointment has delete successfully !');
         }
     }
 }

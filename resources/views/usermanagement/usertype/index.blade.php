@@ -51,6 +51,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex">
+                {!! $usertypes->appends(['sort' => 'usertypes'])->links() !!}
+            </div>
         </div>
     </div>
     <script>

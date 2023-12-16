@@ -23,13 +23,13 @@
 </div>
 </div>
 @endif
-@if (session()->has('delete'))
+{{-- @if (session()->has('delete'))
 <div class="alert alert-danger alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     <strong>Success!</strong> {{ session('delete') ?? '' }}
 </div>
 </div>
-@endif
+@endif --}}
 <div class="card">
     <div class="card-body">
         <div class="table-responsive">
@@ -91,8 +91,8 @@
                 @endforelse
             </table>
             <div class="d-flex">
-                {{-- {!! $forreceps->links() !!} --}}
-                {{-- {!! $forreceps->appends(['sort' => 'name'])->links() !!} --}}
+                {{-- {!! $appointmentss->links() !!} --}}
+                {!! $appointments->appends(['sort' => 'id'])->links() !!}
             </div>
         </div>
     </div>
@@ -101,7 +101,7 @@
     function confirmDelete(appointment) {
         Swal.fire({
             title: "Are you sure?"
-            , text: "You want to delete thid record !"
+            , text: "You want to delete this record!"
             , icon: "warning"
             , showCancelButton: true
             , confirmButtonColor: "#3085d6"
@@ -109,9 +109,19 @@
             , confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
+                // Assuming the deletion is successful, you can add the success message here
+                Swal.fire({
+                    icon: "success",
+                    title: "Record deleted successfully",
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    position: "center"
+                });
                 document.getElementById('delete-form-' + appointment).submit();
             }
         });
     }
 </script>
+
 @endsection

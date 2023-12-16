@@ -12,7 +12,7 @@ class UsertypeController extends Controller
      */
     public function index()
     {
-        $usertypes = Usertype::all();
+        $usertypes = Usertype::paginate(5);
         return view('usermanagement.usertype.index',compact('usertypes'));
     }
 

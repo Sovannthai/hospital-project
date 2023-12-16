@@ -12,9 +12,9 @@ class DiseasController extends Controller
      */
     public function index()
     {
-        $diseass = Diseas::all();
+        // $diseass = Diseas::all();
         $diseases = Diseas::paginate(5);
-        return view('diseas.index',compact('diseass','diseases'));
+        return view('diseas.index',compact('diseases'));
     }
 
     /**

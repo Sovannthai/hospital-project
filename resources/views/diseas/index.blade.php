@@ -3,6 +3,7 @@
 @section('content-header', 'Diseas Management')
 @section('content')
     <button href="" class="btn btn-primary mb-2" data-toggle="modal" data-target="#create">Add New</button>
+    @include('diseas.create')
     @if (session()->has('store'))
         <div class="alert alert-success alert-dismissible">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -21,7 +22,6 @@
             <strong>Success!</strong> {{ session('delete') ?? '' }}
         </div>
     @endif
-    @include('diseas.create')
     <div class="card">
         <div class="card-body">
             <table class="table table-bordered table-hover">

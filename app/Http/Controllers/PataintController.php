@@ -13,7 +13,7 @@ class PataintController extends Controller
      */
     public function index()
     {
-        $pataints = Pataint::all();
+        $pataints = Pataint::paginate(5);
         return view('pataint.index',compact('pataints'));
     }
 

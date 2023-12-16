@@ -10,11 +10,12 @@
 </style>
 <div class="card">
     <div class="card-body">
-        <form action="{{ route('appointment.store') }}" method="POST">
+        <form action="{{ route('appointment.store') }}" method="POST" id="appointmentForm">
             @csrf
             <div class="row">
                 <div class="form-group col-4">
                     <label for="">Pataint Name</label>
+                    {{-- <input type="text" name="" id=""> --}}
                     <select name="pataint_id" id="" class="form-control">
                         <option value="">Select Pataint...</option>
                         @foreach ($pataints as $pataint)
@@ -61,4 +62,40 @@
         </form>
     </div>
 </div>
+{{-- <script>
+    document.getElementById('appointmentForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        fetch(this.action, {
+            method: this.method,
+            body: new FormData(this)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Appointment created successfully!',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    position: 'top-end'
+                });
+
+                // Optionally, you can redirect the user to another page or perform other actions
+                 window.location.href = '{{ route('appointment.index') }}';
+            } else {
+                // Handle other cases or display an error message
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error creating appointment',
+                    text: 'Please try again later.',
+                    position: 'top-end'
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script> --}}
 @endsection
