@@ -1943,7 +1943,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
 
 .sidebar-menu .dropdown-toggle:hover,
 .sidebar-menu .show>.dropdown-toggle {
-    background: rgba(236, 240, 244, .19);
+    background: rgba(152, 42, 255, 0.877);
     color: #fff
 }
 
@@ -2099,11 +2099,11 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
 .sidebar-menu .submenu li a.active,
 .sidebar-menu .submenu li a:hover {
     color: #fff;
-    background-color: rgba(0, 0, 0, .4)
+    background-color: rgba(152, 42, 255, 0.877)
 }
 
 .sidebar-menu>ul>li>.dropdown-toggle.active {
-    background-color: rgba(236, 240, 244, .19)
+    background-color: rgba(152, 42, 255, 0.877)
 }
 
 .sidebar-light .sidebar-menu>ul>li>.dropdown-toggle.active {

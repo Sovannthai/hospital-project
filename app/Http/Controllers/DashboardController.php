@@ -2,18 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Diseas;
+use App\Models\User;
+use App\Models\Pataint;
+use App\Models\Employee;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 
-class DiseasController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $diseases = Diseas::all();
-        return view('diseas.index',compact('diseases'));
+        $emp = Employee::count();
+        $appointment = Appointment::count();
+        $pataint = Pataint::count();
+        $doctors = User::with('usertype')->where('user_type_id', 1)->count();
+        $nurses = User::with('usertype')->where('user_type_id', 2)->count();
+        $users = User::count();
+        return view('home',compact('appointment','pataint','doctors','nurses','users','emp'));
     }
 
     /**
@@ -29,11 +37,7 @@ class DiseasController extends Controller
      */
     public function store(Request $request)
     {
-        $diseas = new Diseas();
-        $diseas->diseas_name = $request->diseas_name;
-        $diseas->save();
-        return redirect()->route('diseas.index')->with('store','Your record has added successfully !');
-
+        //
     }
 
     /**
@@ -57,10 +61,7 @@ class DiseasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $diseas = Diseas::find($id);
-        $diseas->diseas_name = $request->input('diseas_name');
-        $diseas->save();
-        return redirect()->route('diseas.index')->with('update','Your record has update successfully !');
+        //
     }
 
     /**
@@ -68,9 +69,6 @@ class DiseasController extends Controller
      */
     public function destroy(string $id)
     {
-        $diseas = Diseas::find($id);
-        if($diseas->delete()){
-            return redirect()->route('diseas.index')->with('delete','Your record has deleted !');
-        }
+        //
     }
 }

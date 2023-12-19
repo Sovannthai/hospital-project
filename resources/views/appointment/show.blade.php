@@ -12,7 +12,7 @@
                               <dt class="col-sm-5">#</dt>
                               <dd class="col-sm-7">{{ $appointment->id }}</dd>
                               <dt class="col-sm-5">Pataint Name</dt>
-                              <dd class="col-sm-7">{{ $appointment->pataints->name }}</dd>
+                              <dd class="col-sm-7">{{ @$appointment->pataints->name }}</dd>
                               <dt class="col-sm-5">Disease</dt>
                               <dd class="col-sm-7">{{ $appointment->disease->diseas_name }}</dd>
                               <dt class="col-sm-5">Doctor(Appoiment)</dt>

@@ -18,12 +18,23 @@
                 </li>
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="icon-copy fa fa-users" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">User Management</span>
+                        <span  class="icon-copy fa fa-address-book-o" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">User Management</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('usermanagement.user.index') }}" class="@if (request()->routeIs('usermanagement.user.index'))active @endif" ><span class="icon-copy fa fa-user-secret" aria-hidden="true"></span>User</a></li>
+                        <li><a href="{{ route('usermanagement.user.index') }}" class="@if (request()->routeIs('usermanagement.user.index'))active @endif" ><span class="icon-copy fa fa-user" aria-hidden="true"></span>User</a></li>
                         <li>
                             <a href="{{ route('usermanagement.usertype.index') }}" class="@if (request()->routeIs('usermanagement.usertype.index'))active @endif" ><span class="icon-copy fa fa-pencil-square-o" aria-hidden="true"></span>User Type</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="icon-copy fa fa-users" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Employees</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('employee.index') }}" class="@if (request()->routeIs('employee.index'))active @endif"><span class="icon-copy fa fa-user" aria-hidden="true"></span>Employee List</a></li>
+                        <li>
+                            <a href="{{ route('emp_group.index') }}" class="@if (request()->routeIs('emp_group.index'))active @endif"><span class="icon-copy fa fa-pencil-square-o" aria-hidden="true"></span>Employee Group</a>
                         </li>
                     </ul>
                 </li>
@@ -43,17 +54,6 @@
                         </li>
                     </ul>
                 </li>
-                {{-- <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="icon-copy fa fa-user-plus" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Nurse</span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="{{ route('nurse.index') }}"><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Patient</a></li>
-                        <li>
-                            <a href="{{ route('nurse.create') }}" ><span class="icon-copy fa fa-plus-circle" aria-hidden="true"></span>Add Patient</a>
-                        </li>
-                    </ul>
-                </li> --}}
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="icon-copy dw dw-calendar-11"></span><span class="mtext" style="position: relative; left: -20px;">Appointment</span>
@@ -67,13 +67,13 @@
                 </li>
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="icon-copy fa fa-medkit" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Medicine</span>
+                        <span class="icon-copy dw dw-box-1"></span><span class="mtext" style="position: relative; left: -20px;">Product Setup</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="form-basic.html"><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Medicine</a></li>
-                        <li><a href="form-basic.html"><span class="icon-copy bi bi-tags-fill"></span>Category</a></li>
+                        <li><a href=""><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Product</a></li>
+                        <li><a href=""><span class="icon-copy bi bi-tags-fill"></span>Category</a></li>
                         <li>
-                            <a href="advanced-components.html"><span class="icon-copy fa fa-plus-circle" aria-hidden="true"></span>Add New </a>
+                            <a href="{{ route('unit.index') }}"><span class="icon-copy dw dw-balance"></span>Unit</a>
                         </li>
                     </ul>
                 </li>
@@ -82,8 +82,8 @@
                         <span class="icon-copy fa fa-industry" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Laboratory</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="form-basic.html"><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Laboratory</a></li>
-                        <li><a href="form-basic.html"><span class="icon-copy bi bi-tags-fill"></span>Category</a></li>
+                        <li><a href=""><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Laboratory</a></li>
+                        <li><a href=""><span class="icon-copy bi bi-tags-fill"></span>Category</a></li>
                         <li>
                             <a href="advanced-components.html"><span class="icon-copy fa fa-plus-circle" aria-hidden="true"></span>Add New </a>
                         </li>

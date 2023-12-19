@@ -7,8 +7,9 @@
         white-space: nowrap;
     }
 
+
 </style>
-<a href="{{ route('pataint.create') }}" class="btn btn-primary mb-2">+ Add Pataints</a>
+<a href="{{ route('pataint.create') }}" class="btn btn-primary mb-2"><i class="icon-copy dw dw-add-user"> Add Pataints</i></a>
 @if (session()->has('store'))
 <div class="alert alert-success alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -23,13 +24,13 @@
 </div>
 </div>
 @endif
-@if (session()->has('delete'))
+{{-- @if (session()->has('delete'))
 <div class="alert alert-danger alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     <strong>Success!</strong> {{ session('delete') ?? '' }}
 </div>
 </div>
-@endif
+@endif --}}
 <div class="card">
     <div class="card-body">
         <div class="table-responsive">
@@ -79,14 +80,17 @@
             <div class="d-flex">
                 {!! $pataints->appends(['sort' => 'pataints'])->links() !!}
             </div>
+            <div>
+                <div class="mt-2">All: {{ $pataint1 }} entries</div>
+            </div>
         </div>
     </div>
 </div>
 <script>
-    function confirmDelete(pataintId) {
+    function confirmDelete(pataint) {
         Swal.fire({
             title: "Are you sure?"
-            , text: "You want to delete this record !"
+            , text: "You want to delete this record!"
             , icon: "warning"
             , showCancelButton: true
             , confirmButtonColor: "#3085d6"
@@ -94,7 +98,15 @@
             , confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById('delete-form-' + pataintId).submit();
+                Swal.fire({
+                    icon: "success",
+                    title: "Record deleted successfully",
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    position: "center"
+                });
+                document.getElementById('delete-form-' + pataint).submit();
             }
         });
     }

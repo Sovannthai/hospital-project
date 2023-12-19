@@ -11825,7 +11825,10 @@
 }
 
 .dw-box-1:before {
-    content: "\edc2"
+    content: "\edc2";
+    font-size: 20px;
+    position: relative;
+    left: -45px;
 }
 
 .dw-stop:before {
@@ -11873,7 +11876,10 @@
 }
 
 .dw-balance:before {
-    content: "\edce"
+    content: "\edce";
+    font-size: 20px;
+    position: relative;
+    left: -30px;
 }
 
 .dw-diskette2:before {
@@ -12245,7 +12251,10 @@
 }
 
 .dw-box:before {
-    content: "\ee2b"
+    content: "\ee2b";
+    font-size: 20px;
+    position: relative;
+    left: -45px;
 }
 
 .dw-bookmark2:before {
@@ -12531,7 +12540,10 @@
 }
 
 .fa-user:before {
-    content: "\f007"
+    content: "\f007";
+    font-size: 20px;
+    position: relative;
+    left: -30px;
 }
 
 .fa-film:before {

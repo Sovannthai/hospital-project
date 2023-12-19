@@ -8,7 +8,7 @@
     }
 
 </style>
-<a href="{{ route('appointment.create') }}" class="btn btn-primary mb-2">+ Add Pataints</a>
+<a href="{{ route('appointment.create') }}" class="btn btn-primary mb-2"><i class="icon-copy dw dw-add"> Add Pataint</i></a>
 @if (session()->has('store'))
 <div class="alert alert-success alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -50,8 +50,8 @@
                 <tbody>
                     @forelse ($appointments as $appointment)
                     <tr>
-                        <td>{{ $appointment->id }}</td>
-                        <td>{{ $appointment->pataints->name }}</td>
+                        <td>{{ @$appointment->id }}</td>
+                        <td>{{ @$appointment->pataints->name }}</td>
                         <td>{{ $appointment->disease->diseas_name }}</td>
                         <td>{{ $appointment->doctor->name }}</td>
                         <td>{{ $appointment->appointment_date }}</td>
@@ -94,6 +94,9 @@
                 {{-- {!! $appointmentss->links() !!} --}}
                 {!! $appointments->appends(['sort' => 'id'])->links() !!}
             </div>
+            <div>
+                <div class="mt-2">All: {{ $app }} entries</div>
+            </div>
         </div>
     </div>
 </div>
@@ -109,12 +112,11 @@
             , confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                // Assuming the deletion is successful, you can add the success message here
                 Swal.fire({
                     icon: "success",
                     title: "Record deleted successfully",
                     showConfirmButton: false,
-                    timer: 5000,
+                    timer: 10000,
                     timerProgressBar: true,
                     position: "center"
                 });

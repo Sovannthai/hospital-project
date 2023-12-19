@@ -2,7 +2,7 @@
 @section('title','User')
 @section('content-header','User List')
 @section('content')
-<a href="" class="btn btn-primary mb-2" data-toggle="modal" data-target="#create">Add New</a>
+<a href="" class="btn btn-primary mb-2" data-toggle="modal" data-target="#create"><i class="icon-copy dw dw-add-user"> Add New</i></a>
 @include('usermanagement.user.create')
 @if (session()->has('store'))
 <div class="alert alert-success alert-dismissible">
