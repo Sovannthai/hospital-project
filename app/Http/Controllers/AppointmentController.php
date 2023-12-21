@@ -22,7 +22,7 @@ class AppointmentController extends Controller
         $diseases = Diseas::all();
         $pataints = Pataint::all();
         $users = User::all();
-        $appointments = Appointment::paginate(5);
+        $appointments = Appointment::all();
         $app = Appointment::count();
         return view('appointment.index', compact('appointments', 'diseases', 'pataints', 'users','app'));
     }

@@ -14,4 +14,8 @@ class Pataint extends Model
     {
         return $this->hasMany(Appointment::class);
     }
+    public function create()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }

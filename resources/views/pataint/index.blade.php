@@ -9,7 +9,6 @@
 
 
 </style>
-<a href="{{ route('pataint.create') }}" class="btn btn-primary mb-2"><i class="icon-copy dw dw-add-user"> Add Pataints</i></a>
 @if (session()->has('store'))
 <div class="alert alert-success alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -31,7 +30,7 @@
 </div>
 </div>
 @endif --}}
-<div class="card">
+{{-- <div class="card">
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
@@ -84,6 +83,56 @@
                 <div class="mt-2">All: {{ $pataint1 }} entries</div>
             </div>
         </div>
+    </div>
+</div> --}}
+<div class="card-box mb-30">
+    <div class="pd-20">
+        <a href="{{ route('pataint.create') }}" class="btn btn-primary mb-2"><i class="icon-copy dw dw-add-user"> Add Pataints</i></a>
+    </div>
+    <div class="pb-20">
+        <table class="data-table table hover multiple-select-row nowrap">
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">DOB</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Create By</th>
+                        <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($pataints as $pataint)
+                <tr>
+                    <td>{{ $pataint->id }}</td>
+                        <td>{{ $pataint->name }}</td>
+                        <td>{{ $pataint->gender }}</td>
+                        <td>{{ $pataint->dob }}</td>
+                        <td>{{ $pataint->phone }}</td>
+                        <td>{{ $pataint->address }}</td>
+                        <td>{{ $pataint->create->name }}</td>
+                        <td>
+                            <a href="{{ route('pataint.edit',['pataint'=>$pataint->id]) }}" class="btn btn-primary btn-sm"><i class="icon-copy dw dw-edit1"></i></a>
+                            <a href="" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#show-{{ $pataint->id }}"><i class="icon-copy dw dw-eye"></i></a>
+                            @include('pataint.show')
+                            <form action="{{ route('pataint.destroy',['pataint'=>$pataint->id]) }}" method="POST" class="d-inline-block" id="delete-form-{{ $pataint->id }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $pataint->id }})"><i class="icon-copy dw dw-trash1"></i></button>
+                            </form>
+                        </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="8">
+                        <h4>No data</h4>
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
 </div>
 <script>

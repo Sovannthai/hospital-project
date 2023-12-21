@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ErrorRequest;
+use auth;
 use App\Models\Pataint;
 use Illuminate\Http\Request;
+use App\Http\Requests\ErrorRequest;
 
 class PataintController extends Controller
 {
@@ -13,7 +14,7 @@ class PataintController extends Controller
      */
     public function index()
     {
-        $pataints = Pataint::paginate(5);
+        $pataints = Pataint::all();
         $pataint1 = Pataint::count();
         return view('pataint.index',compact('pataints','pataint1'));
     }
@@ -37,6 +38,7 @@ class PataintController extends Controller
         $pataint->dob = $request->dob;
         $pataint->phone = $request->phone;
         $pataint->address = $request->address;
+        $pataint->created_by = auth()->user()->id;
         $pataint->save();
 
         return redirect()->route('pataint.index')->with('store','Pataint has added successfully !');

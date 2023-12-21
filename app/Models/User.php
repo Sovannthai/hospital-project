@@ -40,6 +40,10 @@ class User extends Authenticatable
     {
     return $this->hasMany(Appointment::class);
     }
+    public function pataints()
+    {
+    return $this->hasMany(Pataint::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
