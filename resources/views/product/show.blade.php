@@ -1,3 +1,9 @@
+  <style>
+    .image{
+        width: 200px;
+        height: 190px;
+    }
+  </style>
   <div class="modal fade" id="show-{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
@@ -9,8 +15,12 @@
                       </div>
                       <div class="card-body">
                           <dl class="row">
+                            <dt class="col-sm-5">Image</dt>
+                              <dd class="col-sm-7">
+                                <img class="image img-thumbnail" src="{{ asset('uploads/product/'.$product->image) }}" alt="">
+                              </dd>
                               <dt class="col-sm-5">#</dt>
-                              <dd class="col-sm-7">{{ $product->id }}</dd>
+                              <dd class="col-sm-7" >{{ $product->id }}</dd>
                               <dt class="col-sm-5">Name</dt>
                               <dd class="col-sm-7">{{ $product->name }}</dd>
                               <dt class="col-sm-5">Code</dt>
