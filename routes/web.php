@@ -17,6 +17,7 @@ use App\Http\Controllers\CategorylaboController;
 use App\Http\Controllers\ReceptionistController;
 use App\Http\Controllers\EmployeegroupController;
 use App\Http\Controllers\ProductcategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UnitController;
 use App\Models\ProductCategory;
 
@@ -77,4 +78,7 @@ Route::post('/update-emp/{id}',[EmployeeController::class,'updateStatus'])->name
 Route::resource('/unit', UnitController::class);
 //Category Product Route
 Route::resource('/categories',ProductcategoryController::class);
+//Product Route
+Route::resource('/product',ProductController::class);
+Route::post('/update-status/{id}',[ProductController::class,'updateStatus'])->name('products.update');
 
