@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Unit;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
-class UnitController extends Controller
+class ProductcategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $units = Unit::all();
-        return view('unit.index', compact('units'));
+        $categories = ProductCategory::all();
+        return view('product_category.index',compact('categories'));
     }
 
     /**
@@ -29,11 +29,10 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        $unit = new Unit();
-        $unit->name = $request->name;
-        $unit->save();
-
-        return redirect()->route('unit.index')->with('store', 'Unit has added successfully !');
+        $category = new ProductCategory();
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route('categories.index')->with('store','Category added successfully !');
     }
 
     /**
@@ -57,11 +56,10 @@ class UnitController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $unit = Unit::findOrFail($id);
-        $unit->name = $request->name;
-        $unit->save();
-
-        return redirect()->route('unit.index')->with('update', 'Unit has added successfully !');
+        $category = ProductCategory::find($id);
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route('categories.index')->with('update','Category added successfully !');
     }
 
     /**
@@ -69,9 +67,10 @@ class UnitController extends Controller
      */
     public function destroy(string $id)
     {
-        $unit = Unit::find($id);
-        if ($unit->delete()) {
-            return redirect()->route('unit.index')->with('delete', 'Unit has deleted successfully !');
+        $category = ProductCategory::find($id);
+        if ($category->delete())
+        {
+            return redirect()->route('categories.index')->with('delete','Category added successfully !');
         }
     }
 }

@@ -1,14 +1,7 @@
 @extends('layouts.admin')
-@section('title', 'Hospital')
-@section('content-header', 'List Pataint')
+@section('title','Hospital')
+@section('content-header','Category')
 @section('content')
-<style>
-    .table {
-        white-space: nowrap;
-    }
-
-
-</style>
 @if (session()->has('store'))
 <div class="alert alert-success alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -23,51 +16,39 @@
 </div>
 </div>
 @endif
-{{-- @if (session()->has('delete'))
+@if (session()->has('delete'))
 <div class="alert alert-danger alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     <strong>Success!</strong> {{ session('delete') ?? '' }}
 </div>
 </div>
-@endif --}}
+@endif
 <div class="card-box mb-30">
     <div class="pd-20">
-        <a href="{{ route('pataint.create') }}" class="btn btn-primary mb-2"><i class="icon-copy dw dw-add-user"> Add Pataints</i></a>
+        <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#create"><i class="icon-copy dw dw-add"> Add New</i></a>
+        @include('product_category.create')
     </div>
     <div class="pb-20">
         <table class="data-table table hover multiple-select-row nowrap">
             <thead>
                 <tr>
-                    <th scope="col">No.</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">DOB</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Create By</th>
-                        <th scope="col">Action</th>
+                    <th class="table-plus datatable-nosort">Name</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse ($pataints as $pataint)
+                @forelse ($categories as $categorie)
                 <tr>
-                    <td>{{ $pataint->id }}</td>
-                        <td>{{ $pataint->name }}</td>
-                        <td>{{ $pataint->gender }}</td>
-                        <td>{{ $pataint->dob }}</td>
-                        <td>{{ $pataint->phone }}</td>
-                        <td>{{ $pataint->address }}</td>
-                        <td>{{ $pataint->create->name }}</td>
-                        <td>
-                            <a href="{{ route('pataint.edit',['pataint'=>$pataint->id]) }}" class="btn btn-primary btn-sm"><i class="icon-copy dw dw-edit1"></i></a>
-                            <a href="" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#show-{{ $pataint->id }}"><i class="icon-copy dw dw-eye"></i></a>
-                            @include('pataint.show')
-                            <form action="{{ route('pataint.destroy',['pataint'=>$pataint->id]) }}" method="POST" class="d-inline-block" id="delete-form-{{ $pataint->id }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $pataint->id }})"><i class="icon-copy dw dw-trash1"></i></button>
-                            </form>
-                        </td>
+                    <td class="table-plus">{{ $categorie->name }}</td>
+                    <td>
+                        <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-{{ $categorie->id }}"><i class="icon-copy dw dw-edit1"></i></a>
+                    @include('product_category.edit')
+                        <form action="{{ route('categories.destroy',['category'=>$categorie->id]) }}" method="POST" class="d-inline-block" id="delete-form-{{ $categorie->id }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $categorie->id }})"><i class="icon-copy dw dw-trash1"></i></button>
+                        </form>
+                    </td>
                 </tr>
                 @empty
                 <tr>
@@ -105,4 +86,5 @@
         });
     }
 </script>
+
 @endsection

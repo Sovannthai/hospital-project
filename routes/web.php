@@ -16,7 +16,9 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\CategorylaboController;
 use App\Http\Controllers\ReceptionistController;
 use App\Http\Controllers\EmployeegroupController;
+use App\Http\Controllers\ProductcategoryController;
 use App\Http\Controllers\UnitController;
+use App\Models\ProductCategory;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,4 +75,6 @@ Route::resource('employee', EmployeeController::class);
 Route::post('/update-emp/{id}',[EmployeeController::class,'updateStatus'])->name('emp.update');
 //Unit Route
 Route::resource('/unit', UnitController::class);
+//Category Product Route
+Route::resource('/categories',ProductcategoryController::class);
 

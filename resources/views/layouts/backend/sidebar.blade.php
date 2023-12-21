@@ -71,9 +71,9 @@
                     </a>
                     <ul class="submenu">
                         <li><a href=""><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Product</a></li>
-                        <li><a href=""><span class="icon-copy bi bi-tags-fill"></span>Category</a></li>
+                        <li><a href="{{ route('categories.index') }}" class="@if (request()->routeIs('categories.index'))active @endif"><span class="icon-copy bi bi-tags-fill"></span>Category</a></li>
                         <li>
-                            <a href="{{ route('unit.index') }}"><span class="icon-copy dw dw-balance"></span>Unit</a>
+                            <a href="{{ route('unit.index') }}" class="@if (request()->routeIs('unit.index'))active @endif"><span class="icon-copy dw dw-balance"></span>Unit</a>
                         </li>
                     </ul>
                 </li>

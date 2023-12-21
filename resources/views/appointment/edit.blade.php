@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title','Hospital')
-@section('content-header','Add Appointment');
+@section('content-header','Edit Appointment');
 @section('content')
 <style>
     .form-control {

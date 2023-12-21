@@ -69,9 +69,9 @@
 
     </script>
     <style>
-        .form-control {
-            border-radius: 0;
-        }
+            .form-control {
+                border-radius: 0;
+            }
 
     </style>
 </head>
