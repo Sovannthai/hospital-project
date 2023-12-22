@@ -22,16 +22,17 @@
 </div>
 </div>
 @endif
-{{-- @if (session()->has('delete'))
+@if (session()->has('delete'))
 <div class="alert alert-danger alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     <strong>Success!</strong> {{ session('delete') ?? '' }}
 </div>
 </div>
-@endif --}}
+@endif
 <div class="card-box mb-30">
     <div class="pd-20">
-        <a href="{{ route('appointment.create') }}" class="btn btn-primary mb-2"><i class="icon-copy dw dw-add"> Add Pataint</i></a>
+        <a href="" class="btn btn-primary mb-2" data-toggle="modal" data-target="#create"><i class="icon-copy dw dw-add"> Add New</i></a>
+        @include('appointment.create')
     </div>
     <div class="pb-20">
         <table class="data-table table hover multiple-select-row nowrap">
@@ -40,11 +41,11 @@
                     <th scope="col">No.</th>
                     <th scope="col">Pataint Name</th>
                     <th scope="col">Disease</th>
-                    <th scope="col">Doctor</th>
+                    <th scope="col">Assigned/Dr.</th>
                     <th scope="col">Appointment Date/Time</th>
                     <th scope="col">Status</th>
                     <th scope="col">Created By</th>
-                    <th scope="col">Created At</th>
+                    {{-- <th scope="col">Created At</th> --}}
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -70,9 +71,10 @@
                         @endif
                     </td>
                     <td>{{ @$appointment->create->name }}</td>
-                    <td>{{ $appointment->created_at }}</td>
+                    {{-- <td>{{ $appointment->created_at }}</td> --}}
                     <td>
-                        <a href="{{ route('appointment.edit',['id'=>$appointment->id]) }}" class="btn btn-primary btn-sm"><i class="icon-copy dw dw-edit1"></i></a>
+                        <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-{{ $appointment->id }}"><i class="icon-copy dw dw-edit1"></i></a>
+                        @include('appointment.edit')
                         <a href="" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#show-{{ $appointment->id }}"><i class="icon-copy dw dw-eye"></i></a>
                         @include('appointment.show')
                         <form action="{{ route('appointment.destroy',['id'=>$appointment->id]) }}" method="POST" class="d-inline-block" id="delete-form-{{ $appointment->id }}">

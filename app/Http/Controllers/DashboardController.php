@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Pataint;
 use App\Models\Employee;
 use App\Models\Appointment;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -21,7 +22,8 @@ class DashboardController extends Controller
         $doctors = User::with('usertype')->where('user_type_id', 1)->count();
         $nurses = User::with('usertype')->where('user_type_id', 2)->count();
         $users = User::count();
-        return view('home',compact('appointment','pataint','doctors','nurses','users','emp'));
+        $product = Product::count();
+        return view('home',compact('appointment','pataint','doctors','nurses','users','emp','product'));
     }
 
     /**

@@ -121,6 +121,23 @@
         <div class="card-box height-100-p widget-style3">
             <div class="d-flex flex-wrap">
                 <div class="widget-data">
+                    <div class="font-18 text-secondary weight-500">
+                        Product
+                    </div>
+                    <div class="weight-700 font-24 text-dark">{{ $product }}</div>
+                </div>
+                <div class="widget-icon">
+                    <div class="icon" data-color="#00eccf">
+                        <i class="icon-copy bi bi-boxes"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20 home-dash">
+        <div class="card-box height-100-p widget-style3">
+            <div class="d-flex flex-wrap">
+                <div class="widget-data">
                     <div class="font-18 text-secondary weight-500">Earning</div>
                     <div class="weight-700 font-24 text-dark">$ 50,000</div>
                 </div>

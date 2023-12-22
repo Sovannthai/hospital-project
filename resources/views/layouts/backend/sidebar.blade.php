@@ -43,27 +43,15 @@
                         <span class="icon-copy fa fa-resistance" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Disease</span>
                     </a>
                 </li>
-                <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="icon-copy fa fa-address-book-o" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Pataint</span>
+                <li>
+                    <a href="{{ route('pataint.index') }}" class="dropdown-toggle no-arrow @if (request()->routeIs('pataint.index'))active @endif">
+                        <span class="icon-copy fa fa-address-book-o" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Disease</span>
                     </a>
-                    <ul class="submenu">
-                        <li><a href="{{ route('pataint.index') }}" class="@if (request()->routeIs('pataint.index'))active @endif"><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Patient</a></li>
-                        <li>
-                            <a href="{{ route('pataint.create') }}" class="@if (request()->routeIs('pataint.create'))active @endif"><span class="icon-copy fa fa-plus-circle" aria-hidden="true"></span>Add Patient</a>
-                        </li>
-                    </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="icon-copy dw dw-calendar-11"></span><span class="mtext" style="position: relative; left: -20px;">Appointment</span>
+                <li>
+                    <a href="{{ route('appointment.index') }}" class="dropdown-toggle no-arrow @if (request()->routeIs('appointment.index'))active @endif">
+                        <span class="icon-copy dw dw-calendar-11"></span><span class="mtext" style="position: relative; left: -20px;">Appointmenty</span>
                     </a>
-                    <ul class="submenu">
-                        <li><a href="{{ route('appointment.index') }}" class="@if (request()->routeIs('appointment.index'))active @endif"><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Appointment</a></li>
-                        <li>
-                            <a href="{{ route('appointment.create') }}" class="@if (request()->routeIs('appointment.create'))active @endif"><span class="icon-copy fa fa-plus-circle" aria-hidden="true"></span>Add Patient</a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">

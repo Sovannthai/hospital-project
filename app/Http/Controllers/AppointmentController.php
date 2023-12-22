@@ -24,7 +24,8 @@ class AppointmentController extends Controller
         $users = User::all();
         $appointments = Appointment::all();
         $app = Appointment::count();
-        return view('appointment.index', compact('appointments', 'diseases', 'pataints', 'users','app'));
+        $doctors = User::with('usertype')->where('user_type_id', 1)->get();
+        return view('appointment.index', compact('appointments', 'diseases', 'pataints', 'users','app','doctors'));
     }
 
     /**
@@ -32,13 +33,11 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        $appointment = Appointment::all();
-        $diseases = Diseas::all();
-        $pataints = Pataint::all();
+        // $appointment = Appointment::all();
+        // $diseases = Diseas::all();
+        // $pataints = Pataint::all();
         // $nurses = User::with('usertype')->where('user_type_id', 2)->get();
-        $doctors = User::with('usertype')->where('user_type_id', 1)->get();
-
-        return view('appointment.create', compact('appointment', 'diseases', 'pataints', 'doctors'));
+        // return view('appointment.create', compact('appointment', 'diseases', 'pataints', 'doctors'));
     }
 
     /**

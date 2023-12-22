@@ -23,16 +23,17 @@
 </div>
 </div>
 @endif
-{{-- @if (session()->has('delete'))
+@if (session()->has('delete'))
 <div class="alert alert-danger alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     <strong>Success!</strong> {{ session('delete') ?? '' }}
 </div>
 </div>
-@endif --}}
+@endif
 <div class="card-box mb-30">
     <div class="pd-20">
-        <a href="{{ route('pataint.create') }}" class="btn btn-primary mb-2"><i class="icon-copy dw dw-add-user"> Add Pataints</i></a>
+        <a href="" class="btn btn-primary mb-2"  data-toggle="modal" data-target="#create"><i class="icon-copy dw dw-add-user"> Add Pataints</i></a>
+        @include('pataint.create')
     </div>
     <div class="pb-20">
         <table class="data-table table hover multiple-select-row nowrap">
@@ -59,7 +60,8 @@
                         <td>{{ $pataint->address }}</td>
                         <td>{{ $pataint->create->name }}</td>
                         <td>
-                            <a href="{{ route('pataint.edit',['pataint'=>$pataint->id]) }}" class="btn btn-primary btn-sm"><i class="icon-copy dw dw-edit1"></i></a>
+                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-{{ $pataint->id }}"><i class="icon-copy dw dw-edit1"></i></a>
+                            @include('pataint.edit')
                             <a href="" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#show-{{ $pataint->id }}"><i class="icon-copy dw dw-eye"></i></a>
                             @include('pataint.show')
                             <form action="{{ route('pataint.destroy',['pataint'=>$pataint->id]) }}" method="POST" class="d-inline-block" id="delete-form-{{ $pataint->id }}">
