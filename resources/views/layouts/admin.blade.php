@@ -72,6 +72,15 @@
             .form-control {
                 border-radius: 0;
             }
+            /* .card{
+                border-radius: 0;
+            } */
+            .modal-dialog{
+                border-radius: 0;
+            }
+    .modal-content{
+        border-radius: 0;
+    }
 
     </style>
 </head>

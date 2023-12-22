@@ -32,7 +32,7 @@
 @endif
 <div class="card-box mb-30">
     <div class="pd-20">
-        <a href="" class="btn btn-primary mb-2"  data-toggle="modal" data-target="#create"><i class="icon-copy dw dw-add-user"> Add Pataints</i></a>
+        <a href="" class="btn btn-primary mb-2"  data-toggle="modal" data-target="#create"><i class="icon-copy dw dw-add-user"> Add Pataint</i></a>
         @include('pataint.create')
     </div>
     <div class="pb-20">

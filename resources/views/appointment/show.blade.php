@@ -15,7 +15,7 @@
                               <dd class="col-sm-7">{{ @$appointment->pataints->name }}</dd>
                               <dt class="col-sm-5">Disease</dt>
                               <dd class="col-sm-7">{{ @$appointment->disease->diseas_name }}</dd>
-                              <dt class="col-sm-5">Doctor(Appoiment)</dt>
+                              <dt class="col-sm-5">Assigned/Dr.</dt>
                               <dd class="col-sm-7">{{ @$appointment->doctor->name }}</dd>
                               <dt class="col-sm-5">Appointment Date/Time</dt>
                               <dd class="col-sm-7">{{ $appointment->appointment_date }}</dd>

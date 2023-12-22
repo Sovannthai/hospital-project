@@ -45,12 +45,12 @@
                 </li>
                 <li>
                     <a href="{{ route('pataint.index') }}" class="dropdown-toggle no-arrow @if (request()->routeIs('pataint.index'))active @endif">
-                        <span class="icon-copy fa fa-address-book-o" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Disease</span>
+                        <span class="icon-copy fa fa-address-book-o" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Pataint</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('appointment.index') }}" class="dropdown-toggle no-arrow @if (request()->routeIs('appointment.index'))active @endif">
-                        <span class="icon-copy dw dw-calendar-11"></span><span class="mtext" style="position: relative; left: -20px;">Appointmenty</span>
+                        <span class="icon-copy dw dw-calendar-11"></span><span class="mtext" style="position: relative; left: -20px;">Appointment</span>
                     </a>
                 </li>
                 <li class="dropdown">
@@ -72,9 +72,6 @@
                     <ul class="submenu">
                         <li><a href=""><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Laboratory</a></li>
                         <li><a href=""><span class="icon-copy bi bi-tags-fill"></span>Category</a></li>
-                        <li>
-                            <a href="advanced-components.html"><span class="icon-copy fa fa-plus-circle" aria-hidden="true"></span>Add New </a>
-                        </li>
                     </ul>
                 </li>
             </ul>
