@@ -74,6 +74,11 @@
                         <li><a href=""><span class="icon-copy bi bi-tags-fill"></span>Category</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="{{ route('staff.index') }}" class="dropdown-toggle no-arrow @if (request()->routeIs('staff.index'))active @endif">
+                        <span class="icon-copy fa fa-users" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Staff</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

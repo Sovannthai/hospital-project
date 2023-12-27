@@ -17,8 +17,7 @@
                     <div class="row">
                         <div class="form-group col-4">
                             <label for="">Pataint Name</label>
-                            {{-- <input type="text" name="" id=""> --}}
-                            <select name="pataint_id" id="" class="form-control">
+                            <select name="pataint_id" id="" class="form-control custom-select2" style="width: 100%; height: 38px">
                                 <option value="">Select Pataint...</option>
                                 @foreach ($pataints as $pataint)
                                 <option value="{{ $pataint->id }}">{{ $pataint->name }}</option>
