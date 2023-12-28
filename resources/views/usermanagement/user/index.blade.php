@@ -33,8 +33,8 @@
 </style>
 <div class="card">
     <div class="card-body">
-        <table class="table table-bordered table-responsive-sm">
-            <thead class="table-dark table-hover">
+        <table class="data-table table hover nowrap ">
+            <thead>
                 <tr>
                     <th></th>
                     <th>Prefix</th>
@@ -54,12 +54,12 @@
                     <td>$ {{ @$user->salary }}</td>
                     <td>
                         <div class="d-flex">
-                            <a href="" class="btn btn-primary" data-toggle="modal" data-target="#edit-{{ $user->id }}"><i class="icon-copy dw dw-edit1"></i></a>
+                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-{{ $user->id }}"><i class="icon-copy dw dw-edit1"></i></a>
                             @include('usermanagement.user.edit')
                             <form action="{{ route('usermanagement.user.destroy',['id'=>$user->id]) }}" method="POST" class="d-inline-block " id="delete-form-{{ $user->id }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $user->id }})"><i class="icon-copy dw dw-trash1"></i></button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $user->id }})"><i class="icon-copy dw dw-trash1"></i></button>
                             </form>
                         </div>
                     </td>
@@ -68,7 +68,7 @@
             </tbody>
         </table>
         <div class="d-flex">
-            {!! $users->appends(['sort' => 'users'])->links() !!}
+            {{-- {!! $users->appends(['sort' => 'users'])->links() !!} --}}
         </div>
     </div>
 </div>

@@ -29,10 +29,16 @@ class LaboratoryController extends Controller
      */
     public function store(Request $request)
     {
-        $laboratory = new Laboratory();
-        $laboratory->name = $request->name;
-        $laboratory->save();
-        return redirect()->route('laboratory.index')->with('store','laboratory added successfully !');
+        try
+        {
+            $laboratory = new Laboratory();
+            $laboratory->name = $request->name;
+            $laboratory->save();
+            return redirect()->route('laboratory.index')->with('store','laboratory added successfully !');
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with('error','Failed to create Laboratory. Please try again.!');
+        }
     }
 
     /**
@@ -56,10 +62,16 @@ class LaboratoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $laboratory = Laboratory::find($id);
-        $laboratory->name = $request->name;
-        $laboratory->save();
-        return redirect()->route('laboratory.index')->with('update','laboratory added successfully !');
+        try
+        {
+            $laboratory = Laboratory::find($id);
+            $laboratory->name = $request->name;
+            $laboratory->save();
+            return redirect()->route('laboratory.index')->with('update','laboratory added successfully !');
+        }catch(\Exception)
+        {
+            return redirect()->back()->with('error','Failed to update Laboratory. Please try again.!');
+        }
     }
 
     /**

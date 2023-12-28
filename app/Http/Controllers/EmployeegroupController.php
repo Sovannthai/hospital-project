@@ -30,11 +30,18 @@ class EmployeegroupController extends Controller
      */
     public function store(Request $request)
     {
-        $emp_group = new Employeegroup();
-        $emp_group->type_name = $request->type_name;
-        $emp_group->status = $request->has('status');
-        $emp_group->save();
-        return redirect()->route('emp_group.index')->with('store', 'Employee group added successfully !');
+        try
+        {
+            $emp_group = new Employeegroup();
+            $emp_group->type_name = $request->type_name;
+            $emp_group->status = $request->has('status');
+            $emp_group->save();
+            return redirect()->route('emp_group.index')->with('store', 'Employee group added successfully !');
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with('error','Failed to create Employee group. Please try again.!');
+        }
+
     }
 
     /**
@@ -58,11 +65,17 @@ class EmployeegroupController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $emp_group =  Employeegroup::find($id);
-        $emp_group->type_name = $request->type_name;
-        $emp_group->status = $request->has('status');
-        $emp_group->save();
-        return redirect()->route('emp_group.index')->with('update', 'Employee group added successfully !');
+        try
+        {
+            $emp_group =  Employeegroup::find($id);
+            $emp_group->type_name = $request->type_name;
+            $emp_group->status = $request->has('status');
+            $emp_group->save();
+            return redirect()->route('emp_group.index')->with('update', 'Employee group update successfully !');
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with('error','Failed to update Employee group. Please try again.!');
+        }
     }
 
     public function updateStatus($id)

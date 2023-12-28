@@ -29,10 +29,15 @@ class DiseasController extends Controller
      */
     public function store(Request $request)
     {
-        $diseas = new Diseas();
-        $diseas->diseas_name = $request->diseas_name;
-        $diseas->save();
-        return redirect()->route('diseas.index')->with('store','Your record has added successfully !');
+        try{
+            $diseas = new Diseas();
+            $diseas->diseas_name = $request->diseas_name;
+            $diseas->save();
+            return redirect()->route('diseas.index')->with('store','Your record has added successfully !');
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with('error','Failed to create disease. Please try again.!');
+        }
 
     }
 
@@ -57,10 +62,16 @@ class DiseasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $diseas = Diseas::find($id);
-        $diseas->diseas_name = $request->input('diseas_name');
-        $diseas->save();
-        return redirect()->route('diseas.index')->with('update','Your record has update successfully !');
+        try
+        {
+            $diseas = Diseas::find($id);
+            $diseas->diseas_name = $request->input('diseas_name');
+            $diseas->save();
+            return redirect()->route('diseas.index')->with('update','Your record has update successfully !');
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with('error','Failed to create disease. Please try again.!');
+        }
     }
 
     /**

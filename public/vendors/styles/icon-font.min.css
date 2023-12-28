@@ -7174,7 +7174,10 @@
 }
 
 .dw-chat-3:before {
-    content: "\e938"
+    content: "\e938";
+    font-size: 20px;
+    position: relative;
+    left: -45px;
 }
 
 .dw-route:before {

@@ -32,16 +32,21 @@ class PataintController extends Controller
      */
     public function store(ErrorRequest $request)
     {
-        $pataint = new Pataint();
-        $pataint->name = $request->name;
-        $pataint->gender = $request->gender;
-        $pataint->dob = $request->dob;
-        $pataint->phone = $request->phone;
-        $pataint->address = $request->address;
-        $pataint->created_by = auth()->user()->id;
-        $pataint->save();
-
-        return redirect()->route('pataint.index')->with('store','Pataint has added successfully !');
+        try
+        {
+            $pataint = new Pataint();
+            $pataint->name = $request->name;
+            $pataint->gender = $request->gender;
+            $pataint->dob = $request->dob;
+            $pataint->phone = $request->phone;
+            $pataint->address = $request->address;
+            $pataint->created_by = auth()->user()->id;
+            $pataint->save();
+            return redirect()->route('pataint.index')->with('store','Pataint has added successfully !');
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with('error','Failed to create Pataint. Please try again.!');
+        }
     }
 
     /**
@@ -66,15 +71,20 @@ class PataintController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $pataint = Pataint::find($id);
-        $pataint->name = $request->name;
-        $pataint->gender = $request->gender;
-        $pataint->dob = $request->dob;
-        $pataint->phone = $request->phone;
-        $pataint->address = $request->address;
-        $pataint->save();
-
-        return redirect()->route('pataint.index')->with('update','Pataint has updated successfully !');
+        try
+        {
+            $pataint = Pataint::find($id);
+            $pataint->name = $request->name;
+            $pataint->gender = $request->gender;
+            $pataint->dob = $request->dob;
+            $pataint->phone = $request->phone;
+            $pataint->address = $request->address;
+            $pataint->save();
+            return redirect()->route('pataint.index')->with('update','Pataint has updated successfully !');
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with('error','Failed to update Pataint. Please try again.!');
+        }
     }
 
     /**

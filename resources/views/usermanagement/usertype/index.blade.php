@@ -27,8 +27,8 @@
 @endif
     <div class="card">
         <div class="card-body">
-            <table class="table table-bordered table-hover">
-            <thead class="table-dark">
+            <table class="data-table table hover nowrap">
+            <thead>
                     <tr>
                         <th>Type</th>
                         <th>Action</th>
@@ -39,12 +39,12 @@
                     <tr>
                         <td>{{ $usertype->type_name }}</td>
                         <td>
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#edit-{{ $usertype->id }}"><i class="icon-copy dw dw-edit1"></i></a>
+                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-{{ $usertype->id }}"><i class="icon-copy dw dw-edit1"></i></a>
                             @include('usermanagement.usertype.edit')
                             <form action="{{ route('usermanagement.usertype.destroy',['id'=>$usertype->id]) }}" method="POST" class="d-inline-block " id="delete-form-{{ $usertype->id }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $usertype->id }})"><i class="icon-copy dw dw-trash1"></i></button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $usertype->id }})"><i class="icon-copy dw dw-trash1"></i></button>
                             </form>
                         </td>
                     </tr>

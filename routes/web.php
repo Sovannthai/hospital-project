@@ -87,3 +87,6 @@ Route::post('/update-status/{id}',[ProductController::class,'updateStatus'])->na
 //Test Route
 Route::resource('staff', StaffController::class);
 
+//Frontend Route
+
+

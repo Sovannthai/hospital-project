@@ -11,19 +11,18 @@
 @if (session()->has('update'))
 <div class="alert alert-info alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    <strong>Success!</strong> {{ session('update') ?? '' }}
+    <strong>Updated!</strong> {{ session('update') ?? '' }}
 </div>
 @endif
-@if (session()->has('delete'))
+@if (session()->has('error'))
 <div class="alert alert-danger alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    <strong>Success!</strong> {{ session('delete') ?? '' }}
+    <strong>Error!</strong> {{ session('error') ?? '' }}
 </div>
 @endif
 <div class="card">
     <div class="card-box mb-30">
         <div class="pd-20">
-            {{-- <a href="" class="btn btn-primary btn-sm">Add New</a> --}}
             <button href="" class="btn btn-primary mb-2" data-toggle="modal" data-target="#create"><i class="icon-copy dw dw-add"> Add New</i></button>
             @include('diseas.create')
         </div>
@@ -40,12 +39,12 @@
                     <tr>
                         <td class="table-plus">{{ $diseas->diseas_name }}</td>
                         <td>
-                            <a href="#" class="btn btn-primary" aria-hidden="true" data-toggle="modal" data-target="#edit-{{ $diseas->id }}"><i class="icon-copy dw dw-edit1"></i></a>
+                            <a href="#" class="btn btn-primary btn-sm" aria-hidden="true" data-toggle="modal" data-target="#edit-{{ $diseas->id }}"><i class="icon-copy dw dw-edit1"></i></a>
                             @include('diseas.edit')
                             <form action="{{ route('diseas.destroy',['id'=>$diseas->id]) }}" method="POST" class="d-inline-block " id="delete-form-{{ $diseas->id }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $diseas->id }})"><i class="icon-copy dw dw-trash1"></i></button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $diseas->id }})"><i class="icon-copy dw dw-trash1"></i></button>
                             </form>
                         </td>
                     </tr>

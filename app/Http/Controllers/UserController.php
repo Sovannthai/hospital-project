@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         $usertypes = Usertype::all();
-        $users = User::paginate(3);
+        $users = User::all();
         return view('usermanagement.user.index', compact('usertypes', 'users'));
     }
 

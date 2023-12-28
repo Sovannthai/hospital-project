@@ -40,23 +40,27 @@ class ProductController extends Controller
             'unit_id' => 'required',
             'price' => 'required'
         ]);
-        $product = new Product();
-        $product->name = $request->name;
-        $product->code = $request->code;
-        $product->category_id = $request->category_id;
-        $product->unit_id = $request->unit_id;
-        $product->price = $request->price;
-        $product->description = $request->description;
-        $product->status = $request->has('status');
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $extension = $image->getClientOriginalExtension();
-            $imageName = Carbon::now()->toDateString() . "-" . uniqid() . "." . $extension;
-            $image->move(public_path('uploads/product'), $imageName);
-            $product->image = $imageName;
+        try {
+            $product = new Product();
+            $product->name = $request->name;
+            $product->code = $request->code;
+            $product->category_id = $request->category_id;
+            $product->unit_id = $request->unit_id;
+            $product->price = $request->price;
+            $product->description = $request->description;
+            $product->status = $request->has('status');
+            if ($request->has('image')) {
+                $image = $request->file('image');
+                $extension = $image->getClientOriginalExtension();
+                $imageName = Carbon::now()->toDateString() . "-" . uniqid() . "." . $extension;
+                $image->move(public_path('uploads/product'), $imageName);
+                $product->image = $imageName;
+            }
+            $product->save();
+            return redirect()->route('product.index')->with('store', 'Product added successfully !');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to create Product. Please try again.!');
         }
-        $product->save();
-        return redirect()->route('product.index')->with('store', 'Product added successfully !');
     }
 
     /**
@@ -80,23 +84,27 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $product = Product::find($id);
-        $product->name = $request->name;
-        $product->code = $request->code;
-        $product->category_id = $request->category_id;
-        $product->unit_id = $request->unit_id;
-        $product->price = $request->price;
-        $product->description = $request->description;
-        $product->status = $request->has('status');
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $extension = $image->getClientOriginalExtension();
-            $imageName = Carbon::now()->toDateString() . "-" . uniqid() . "." . $extension;
-            $image->move(public_path('uploads/product'), $imageName);
-            $product->image = $imageName;
+        try {
+            $product = Product::find($id);
+            $product->name = $request->name;
+            $product->code = $request->code;
+            $product->category_id = $request->category_id;
+            $product->unit_id = $request->unit_id;
+            $product->price = $request->price;
+            $product->description = $request->description;
+            $product->status = $request->has('status');
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $extension = $image->getClientOriginalExtension();
+                $imageName = Carbon::now()->toDateString() . "-" . uniqid() . "." . $extension;
+                $image->move(public_path('uploads/product'), $imageName);
+                $product->image = $imageName;
+            }
+            $product->save();
+            return redirect()->route('product.index')->with('update', 'Product added successfully !');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to update Product. Please try again.!');
         }
-        $product->save();
-        return redirect()->route('product.index')->with('update', 'Product added successfully !');
     }
     public function updateStatus($id)
     {

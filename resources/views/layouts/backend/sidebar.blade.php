@@ -65,6 +65,15 @@
                         </li>
                     </ul>
                 </li>
+                {{-- <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="icon-copy dw dw-chat-3"></span><span class="mtext" style="position: relative; left: -20px;">Service Management</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href=""><span class="icon-copy fa fa-list" aria-hidden="true"></span>Service</a></li>
+                        <li><a href=""><span class="icon-copy bi bi-tags-fill"></span>Service Category</a></li>
+                    </ul>
+                </li> --}}
                 <li>
                     <a href="{{ route('laboratory.index') }}" class="dropdown-toggle no-arrow @if (request()->routeIs('laboratory.index'))active @endif">
                         <span class="icon-copy fa fa-industry" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Laboratory</span>

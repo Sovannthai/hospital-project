@@ -29,10 +29,17 @@ class ProductcategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new ProductCategory();
-        $category->name = $request->name;
-        $category->save();
-        return redirect()->route('categories.index')->with('store','Category added successfully !');
+        try
+        {
+            $category = new ProductCategory();
+            $category->name = $request->name;
+            $category->save();
+            return redirect()->route('categories.index')->with('store','Category added successfully !');
+        }
+        catch(\Exception $e)
+        {
+            return redirect()->back()->with('error','Failed to create Category. Please try again.!');
+        }
     }
 
     /**
@@ -56,10 +63,16 @@ class ProductcategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $category = ProductCategory::find($id);
-        $category->name = $request->name;
-        $category->save();
-        return redirect()->route('categories.index')->with('update','Category added successfully !');
+        try
+        {
+            $category = ProductCategory::find($id);
+            $category->name = $request->name;
+            $category->save();
+            return redirect()->route('categories.index')->with('update','Category added successfully !');
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with('error','Failed to update Category. Please try again.!');
+        }
     }
 
     /**

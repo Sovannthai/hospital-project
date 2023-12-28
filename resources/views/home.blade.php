@@ -5,7 +5,7 @@
 <style>
     .home-dash{
         transition: 0.5s;
-    }
+    }   
     .home-dash:hover{
         transform: scale(1.1);
     }

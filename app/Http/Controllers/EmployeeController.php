@@ -39,20 +39,26 @@ class EmployeeController extends Controller
             'join_date' => 'required',
             'address' => 'required'
         ]);
-        $emp = new Employee();
-        $emp->name = $request->name;
-        $emp->gender = $request->gender;
-        $emp->mt_status = $request->mt_status;
-        $emp->dob = $request->dob;
-        $emp->phone = $request->phone;
-        $emp->join_date = $request->join_date;
-        $emp->address = $request->address;
-        $emp->status = $request->has('status');
-        $emp->emp_group_id = $request->emp_group_id;
-        // dd($emp);
-        $emp->save();
+        try
+        {
+            $emp = new Employee();
+            $emp->name = $request->name;
+            $emp->gender = $request->gender;
+            $emp->mt_status = $request->mt_status;
+            $emp->dob = $request->dob;
+            $emp->phone = $request->phone;
+            $emp->join_date = $request->join_date;
+            $emp->address = $request->address;
+            $emp->status = $request->has('status');
+            $emp->emp_group_id = $request->emp_group_id;
+            // dd($emp);
+            $emp->save();
 
-        return redirect()->route('employee.index')->with('store', 'Employee added successfully !');
+            return redirect()->route('employee.index')->with('store', 'Employee added successfully !');
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with('error','Failed to create Employee. Please try again.!');
+        }
     }
 
     /**
@@ -76,19 +82,25 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $emp = Employee::findOrFail($id);
-        $emp->name = $request->name;
-        $emp->gender = $request->gender;
-        $emp->mt_status = $request->mt_status;
-        $emp->dob = $request->dob;
-        $emp->phone = $request->phone;
-        $emp->join_date = $request->join_date;
-        $emp->address = $request->address;
-        $emp->status = $request->has('status');
-        $emp->emp_group_id = $request->emp_group_id;
-        // dd($emp);
-        $emp->save();
-        return redirect()->route('employee.index')->with('update', 'Employee updated successfully !');
+        try
+        {
+            $emp = Employee::findOrFail($id);
+            $emp->name = $request->name;
+            $emp->gender = $request->gender;
+            $emp->mt_status = $request->mt_status;
+            $emp->dob = $request->dob;
+            $emp->phone = $request->phone;
+            $emp->join_date = $request->join_date;
+            $emp->address = $request->address;
+            $emp->status = $request->has('status');
+            $emp->emp_group_id = $request->emp_group_id;
+            // dd($emp);
+            $emp->save();
+            return redirect()->route('employee.index')->with('update', 'Employee updated successfully !');
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with('error','Failed to update Employee. Please try again.!');
+        }
     }
     public function updateStatus($id)
     {

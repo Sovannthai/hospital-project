@@ -14,21 +14,21 @@
 @if (session()->has('update'))
 <div class="alert alert-info alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    <strong>Success!</strong> {{ session('update') ?? '' }}
+    <strong>Updated!</strong> {{ session('update') ?? '' }}
 </div>
 </div>
 @endif
-@if (session()->has('delete'))
+@if (session()->has('error'))
 <div class="alert alert-danger alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    <strong>Success!</strong> {{ session('delete') ?? '' }}
+    <strong>Error!</strong> {{ session('error') ?? '' }}
 </div>
 </div>
 @endif
 <div class="card">
     <div class="card-body">
-        <table class="table table-bordered table-hover">
-            <thead class="table-dark">
+        <table class="data-table table hover nowrap">
+            <thead>
                 <tr>
                     <th>Type</th>
                     <th>Status</th>

@@ -29,11 +29,15 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        $unit = new Unit();
-        $unit->name = $request->name;
-        $unit->save();
+        try {
+            $unit = new Unit();
+            $unit->name = $request->name;
+            $unit->save();
 
-        return redirect()->route('unit.index')->with('store', 'Unit has added successfully !');
+            return redirect()->route('unit.index')->with('store', 'Unit has added successfully !');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to create Unit. Please try again.!');
+        }
     }
 
     /**
@@ -57,11 +61,15 @@ class UnitController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $unit = Unit::findOrFail($id);
-        $unit->name = $request->name;
-        $unit->save();
+        try {
+            $unit = Unit::findOrFail($id);
+            $unit->name = $request->name;
+            $unit->save();
 
-        return redirect()->route('unit.index')->with('update', 'Unit has added successfully !');
+            return redirect()->route('unit.index')->with('update', 'Unit has added successfully !');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to update Unit. Please try again.!');
+        }
     }
 
     /**

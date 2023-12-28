@@ -30,33 +30,39 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|min:5',
-            'sex' => 'required',
-            'phone' => 'required|max:15',
-            'salary' => 'required',
-            'address' => 'required'
-        ]);
-        $staff = new Staff();
-        $staff->name = $request->name;
-        $staff->sex = $request->sex;
-        $staff->dob = $request->dob;
-        $staff->phone = $request->phone;
-        $staff->position = $request->position;
-        $staff->salary = $request->salary;
-        $staff->hired_date = $request->hired_date;
-        $staff->stop_date = $request->stop_date;
-        $staff->address = $request->address;
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $extension = $image->getClientOriginalExtension();
-            $imageName = Carbon::now()->toDateString() . "-" . uniqid() . "." . $extension;
-            $image->move(public_path('uploads/users'), $imageName);
-            $staff->image = $imageName;
+        try
+        {
+            $request->validate([
+                'name' => 'required|min:5',
+                'sex' => 'required',
+                'phone' => 'required|max:15',
+                'salary' => 'required',
+                'address' => 'required'
+            ]);
+            $staff = new Staff();
+            $staff->name = $request->name;
+            $staff->sex = $request->sex;
+            $staff->dob = $request->dob;
+            $staff->phone = $request->phone;
+            $staff->position = $request->position;
+            $staff->salary = $request->salary;
+            $staff->hired_date = $request->hired_date;
+            $staff->stop_date = $request->stop_date;
+            $staff->address = $request->address;
+            if ($request->has('image')) {
+                $image = $request->file('image');
+                $extension = $image->getClientOriginalExtension();
+                $imageName = Carbon::now()->toDateString() . "-" . uniqid() . "." . $extension;
+                $image->move(public_path('uploads/users'), $imageName);
+                $staff->image = $imageName;
+            }
+            // dd($staff);
+            $staff->save();
+            return redirect()->route('staff.index')->with('store', 'Staff added successfully !');
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with('error','Failed to create Staff. Please try again.!');
         }
-        // dd($staff);
-        $staff->save();
-        return redirect()->route('staff.index')->with('store', 'Staff added successfully !');
     }
 
     /**
@@ -80,25 +86,32 @@ class StaffController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $staff = Staff::find($id);
-        $staff->name = $request->name;
-        $staff->sex = $request->sex;
-        $staff->dob = $request->dob;
-        $staff->phone = $request->phone;
-        $staff->position = $request->position;
-        $staff->salary = $request->salary;
-        $staff->hired_date = $request->hired_date;
-        $staff->stop_date = $request->stop_date;
-        $staff->address = $request->address;
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $extension = $image->getClientOriginalExtension();
-            $imageName = Carbon::now()->toDateString() . "-" . uniqid() . "." . $extension;
-            $image->move(public_path('uploads/users'), $imageName);
-            $staff->image = $imageName;
+        try
+        {
+            $staff = Staff::find($id);
+            $staff->name = $request->name;
+            $staff->sex = $request->sex;
+            $staff->dob = $request->dob;
+            $staff->phone = $request->phone;
+            $staff->position = $request->position;
+            $staff->salary = $request->salary;
+            $staff->hired_date = $request->hired_date;
+            $staff->stop_date = $request->stop_date;
+            $staff->address = $request->address;
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $extension = $image->getClientOriginalExtension();
+                $imageName = Carbon::now()->toDateString() . "-" . uniqid() . "." . $extension;
+                $image->move(public_path('uploads/users'), $imageName);
+                $staff->image = $imageName;
+            }
+            $staff->save();
+            return redirect()->route('staff.index')->with('update', 'Staff updated successfully !');
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with('error','Failed to update Staff. Please try again.!');
         }
-        $staff->save();
-        return redirect()->route('staff.index')->with('update', 'Staff updated successfully !');
+
     }
 
     /**
