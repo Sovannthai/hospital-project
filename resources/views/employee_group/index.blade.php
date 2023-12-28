@@ -80,6 +80,10 @@
                 }
                 , success: function(response) {
                     console.log(response);
+                    Toast.fire({
+                        icon: 'success'
+                        , title: 'Status updated successfully'
+                    });
                 }
                 , error: function(xhr, status, error) {
                     console.error(xhr.responseText);
@@ -88,12 +92,24 @@
         });
     });
 
+    const Toast = Swal.mixin({
+        toast: true
+        , position: 'top-end'
+        , showConfirmButton: false
+        , timer: 3000
+        , timerProgressBar: true
+        , didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+
 </script>
 <script>
-    function confirmDelete(emp_group) {
+    function confirmDelete(productId) {
         Swal.fire({
             title: "Are you sure?"
-            , text: "You want to delete this record!"
+            , text: "You won't be able to revert this!"
             , icon: "warning"
             , showCancelButton: true
             , confirmButtonColor: "#3085d6"
@@ -102,17 +118,23 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
-                    icon: "success"
-                    , title: "Record deleted successfully"
+                    title: "Deleted!"
+                    , text: "Your file has been deleted."
+                    , icon: "success"
                     , showConfirmButton: false
-                    , timer: 10000
+                    , timer: 3000
                     , timerProgressBar: true
                     , position: "center"
+                    , didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
                 });
-                document.getElementById('delete-form-' + emp_group).submit();
+                document.getElementById('delete-form-' + productId).submit();
             }
         });
     }
 
 </script>
+
 @endsection

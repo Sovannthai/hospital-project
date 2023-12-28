@@ -65,14 +65,10 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
+                <li>
+                    <a href="{{ route('laboratory.index') }}" class="dropdown-toggle no-arrow @if (request()->routeIs('laboratory.index'))active @endif">
                         <span class="icon-copy fa fa-industry" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Laboratory</span>
                     </a>
-                    <ul class="submenu">
-                        <li><a href=""><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Laboratory</a></li>
-                        <li><a href=""><span class="icon-copy bi bi-tags-fill"></span>Category</a></li>
-                    </ul>
                 </li>
                 <li>
                     <a href="{{ route('staff.index') }}" class="dropdown-toggle no-arrow @if (request()->routeIs('staff.index'))active @endif">

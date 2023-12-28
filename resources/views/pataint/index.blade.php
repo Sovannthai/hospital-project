@@ -36,7 +36,7 @@
         @include('pataint.create')
     </div>
     <div class="pb-20">
-        <table class="data-table table hover multiple-select-row nowrap">
+        <table class="data-table table hover nowrap">
             <thead>
                 <tr>
                     <th scope="col">No.</th>

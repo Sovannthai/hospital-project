@@ -9,6 +9,7 @@ use App\Models\Pataint;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use App\Http\Requests\AppointmentRequest;
+use App\Models\Laboratory;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class AppointmentController extends Controller
@@ -24,8 +25,9 @@ class AppointmentController extends Controller
         $users = User::all();
         $appointments = Appointment::all();
         $app = Appointment::count();
+        $laboratories = Laboratory::all();
         $doctors = User::with('usertype')->where('user_type_id', 1)->get();
-        return view('appointment.index', compact('appointments', 'diseases', 'pataints', 'users','app','doctors'));
+        return view('appointment.index', compact('appointments', 'diseases', 'pataints', 'users','app','doctors','laboratories'));
     }
 
     /**
@@ -33,11 +35,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        // $appointment = Appointment::all();
-        // $diseases = Diseas::all();
-        // $pataints = Pataint::all();
-        // $nurses = User::with('usertype')->where('user_type_id', 2)->get();
-        // return view('appointment.create', compact('appointment', 'diseases', 'pataints', 'doctors'));
+        //
     }
 
     /**
@@ -51,6 +49,7 @@ class AppointmentController extends Controller
         $appointment->doctor_id = $request->doctor_id;
         $appointment->appointment_date = $request->appointment_date;
         $appointment->status = $request->status;
+        $appointment->labo_id = $request->labo_id;
         $appointment->created_by = auth()->user()->id;
         $appointment->save();
         return redirect()->route('appointment.index')->with('store', 'Appointment create successfully !');
@@ -87,6 +86,7 @@ class AppointmentController extends Controller
         $appointment->doctor_id = $request->doctor_id;
         $appointment->appointment_date = $request->appointment_date;
         $appointment->status = $request->status;
+        $appointment->labo_id = $request->labo_id;
         $appointment->created_by = auth()->user()->id;
         $appointment->save();
 

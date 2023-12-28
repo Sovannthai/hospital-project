@@ -35,7 +35,7 @@
         @include('staff.create')
     </div>
     <div class="pb-20">
-        <table class="data-table table hover multiple-select-row nowrap table-responsive">
+        <table class="data-table table hover nowrap table-responsive">
             <thead>
                 <tr>
                     <th scope="col">Image</th>

@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Laboratory;
 use Illuminate\Http\Request;
-use Ramsey\Uuid\Guid\Guid;
-use Symfony\Component\HttpKernel\Event\ViewEvent;
 
-class CategorylaboController extends Controller
+class LaboratoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('category-labo.create');
+        $laboratories = Laboratory::all();
+        return view('laboratory.index',compact('laboratories'));
     }
 
     /**
@@ -29,7 +29,10 @@ class CategorylaboController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $laboratory = new Laboratory();
+        $laboratory->name = $request->name;
+        $laboratory->save();
+        return redirect()->route('laboratory.index')->with('store','laboratory added successfully !');
     }
 
     /**
@@ -53,7 +56,10 @@ class CategorylaboController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $laboratory = Laboratory::find($id);
+        $laboratory->name = $request->name;
+        $laboratory->save();
+        return redirect()->route('laboratory.index')->with('update','laboratory added successfully !');
     }
 
     /**
@@ -61,6 +67,9 @@ class CategorylaboController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $laboratory = Laboratory::findOrFail($id);
+        if ($laboratory->delete()) {
+            return redirect()->route('laboratory.index');
+        }
     }
 }

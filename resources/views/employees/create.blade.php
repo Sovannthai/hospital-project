@@ -12,7 +12,7 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Create Employee</h5>
             </div>
             <div class="modal-body">
-                <form action="{{ route('employee.store') }}" method="POST">
+                <form id="employeeForm" action="{{ route('employee.store') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="form-group col-3">
@@ -89,7 +89,7 @@
                         <span>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal"  style="position: relative;left:970px;">Close</button>
                         </span>
-                        <button type="submit" class="btn btn-primary" style="position: relative;left:975px;">Save</button>
+                        <button type="submit"  id="saveEmployeeBtn" class="btn btn-primary" style="position: relative;left:975px;">Save</button>
                     </div>
                 </form>
             </div>

@@ -5,18 +5,6 @@
     <!-- Basic Page Info -->
     <meta charset="utf-8" />
     <title>@yield('title', 'Hospital')</title>
-    {{-- ////// --}}
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
-    <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css" />
-    <!-- switchery css -->
-    <link rel="stylesheet" type="text/css" href="src/plugins/switchery/switchery.min.css" />
-    <!-- bootstrap-tagsinput css -->
-    <link rel="stylesheet" type="text/css" href="src/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" />
-    <!-- bootstrap-touchspin css -->
-    <link rel="stylesheet" type="text/css" href="src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.css" />
-    <link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
-    {{-- ///// --}}
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('vendors/images/apple-touch-icon.png') }}" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('vendors/images/favicon-32x32.png') }}" />
@@ -79,9 +67,9 @@
 
     </script>
     <style>
-        /* .form-control {
+        .form-control {
             border-radius: 0;
-        } */
+        }
 
         /* .card{
                 border-radius: 0;
@@ -116,8 +104,9 @@
     </div>
 
     <!-- js -->
+    <script src="vendors/scripts/delete-update.js"></script>
     <script src="vendors/scripts/core.js"></script>
-    <script src="vendors/scripts/script.min.js"></script>
+    <script src="vendors/scripts/script.min.js"></scrip>
     <script src="vendors/scripts/process.js"></script>
     <script src="vendors/scripts/layout-settings.   js"></script>
     <script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
@@ -137,21 +126,6 @@
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
-    <!-- js -->
-    <script src="vendors/scripts/core.js"></script>
-    <script src="vendors/scripts/script.min.js"></script>
-    <script src="vendors/scripts/process.js"></script>
-    <script src="vendors/scripts/layout-settings.js"></script>
-    <!-- switchery js -->
-    <script src="src/plugins/switchery/switchery.min.js"></script>
-    <!-- bootstrap-tagsinput js -->
-    <script src="src/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
-    <!-- bootstrap-touchspin js -->
-    <script src="src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
-    <script src="vendors/scripts/advanced-components.js"></script>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
 </body>
 
 </html>

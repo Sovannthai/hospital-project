@@ -33,6 +33,8 @@
                                   {{ $appointment->status }}
                                   @endif
                               </dd>
+                              <dt class="col-sm-5">Laboratory</dt>
+                              <dd class="col-sm-7">{{ $appointment->laboratory->name }}</dd>
                               <dt class="col-sm-5">Create By</dt>
                               <dd class="col-sm-7">{{ $appointment->create->name }}</dd>
                           </dl>

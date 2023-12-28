@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->integer('pataint_id');
+            $table->foreignId('pataint_id');
             $table->integer('disease_id');
             $table->integer('doctor_id');
+            $table->integer('laboratory_id');
             $table->timestamp('appointment_date');
             $table->enum('status', ['canceled','pending', 'processing', 'completed'])->default('pending');
             $table->integer('created_by');

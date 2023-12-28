@@ -59,6 +59,15 @@
                                 <option value="Canceled" {{ $appointment->status == 'canceled'?'selected':'' }}>Canceled</option>
                             </select>
                         </div>
+                        <div class="form-group col-4">
+                            <label for="">Laboratory</label>
+                            <select name="labo_id" id="" class="form-control" style="width: 100%; height: 35px">
+                                <option value="">Select laboratory</option>
+                                @foreach ($laboratories as $laboratory)
+                                <option value="{{ $laboratory->id }}"{{ $laboratory->id == $appointment->labo_id ?'selected':'' }}>{{ $laboratory->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div>
                         <span>

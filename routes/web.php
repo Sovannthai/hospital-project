@@ -16,10 +16,12 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\CategorylaboController;
 use App\Http\Controllers\ReceptionistController;
 use App\Http\Controllers\EmployeegroupController;
+use App\Http\Controllers\LaboratoryController;
 use App\Http\Controllers\ProductcategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UnitController;
+use App\Models\Laboratory;
 use App\Models\ProductCategory;
 
 /*
@@ -42,7 +44,7 @@ Auth::routes();
 Route::get('/home', [DashboardController::class, 'index'])->name('home');
 Route::get('/recep',[ReceptionistController::class, 'index'])->name('recep.index');
 Route::get('/recep/create',[ReceptionistController::class, 'create'])->name('recep.create');
-Route::resource('/category-labo',CategorylaboController::class);
+Route::resource('/laboratory',LaboratoryController::class);
 // usermanagement
 Route::get('/usertype',[UsertypeController::class,'index'])->name('usermanagement.usertype.index');
 Route::post('/usertype/store',[UsertypeController::class,'store'])->name('usermanagement.usertype.store');

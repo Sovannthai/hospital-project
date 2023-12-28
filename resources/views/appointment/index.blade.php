@@ -22,37 +22,29 @@
 </div>
 </div>
 @endif
-@if (session()->has('delete'))
-<div class="alert alert-danger alert-dismissible">
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    <strong>Success!</strong> {{ session('delete') ?? '' }}
-</div>
-</div>
-@endif
 <div class="card-box mb-30">
     <div class="pd-20">
         <a href="" class="btn btn-primary mb-2" data-toggle="modal" data-target="#create"><i class="icon-copy dw dw-add"> Add New</i></a>
         @include('appointment.create')
     </div>
     <div class="pb-20">
-        <table class="data-table table hover multiple-select-row nowrap">
+        <table class="data-table table hover  nowrap">
             <thead>
                 <tr>
-                    <th scope="col">No.</th>
+                    {{-- <th scope="col">No.</th> --}}
                     <th scope="col">Pataint Name</th>
                     <th scope="col">Disease</th>
                     <th scope="col">Assigned/Dr.</th>
                     <th scope="col">Appointment Date/Time</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Laboratory</th>
                     <th scope="col">Created By</th>
-                    {{-- <th scope="col">Created At</th> --}}
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($appointments as $appointment)
                 <tr>
-                    <td>{{ @$appointment->id }}</td>
                     <td>{{ @$appointment->pataints->name }}</td>
                     <td>{{ @$appointment->disease->diseas_name }}</td>
                     <td>{{ @$appointment->doctor->name }}</td>
@@ -70,8 +62,8 @@
                         {{ $appointment->status }}
                         @endif
                     </td>
+                    <td>{{ $appointment->laboratory->name }}</td>
                     <td>{{ @$appointment->create->name }}</td>
-                    {{-- <td>{{ $appointment->created_at }}</td> --}}
                     <td>
                         <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-{{ $appointment->id }}"><i class="icon-copy dw dw-edit1"></i></a>
                         @include('appointment.edit')

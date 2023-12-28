@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title','Hospital')
-@section('content-header','Product Management')
+@section('title', 'Hospital')
+@section('content-header', 'Product Management')
 @section('content')
 @if (session()->has('store'))
 <div class="alert alert-success alert-dismissible">
@@ -29,7 +29,7 @@
         @include('product.create')
     </div>
     <div class="pb-20">
-        <table class="data-table table hover multiple-select-row nowrap">
+        <table class="data-table table hover nowrap">
             <thead>
                 <tr>
                     <th>Image</th>
@@ -47,14 +47,14 @@
                 @forelse ($products as $product)
                 <tr>
                     <td style="width: 25px; height:25px">
-                        <img src="{{ asset('uploads/product/'.$product->image) }}" alt="">
+                        <img src="{{ asset('uploads/product/' . $product->image) }}" alt="">
                     </td>
                     <td class="table-plus">{{ $product->name }}</td>
                     <td>{{ $product->code }}</td>
                     <td>{{ $product->unit->name }}</td>
                     <td>{{ $product->category->name }}</td>
                     <td>$ {{ $product->price }}</td>
-                    <td>{{ Str::limit($product->description,10) }}</td>
+                    <td>{{ Str::limit($product->description, 10) }}</td>
                     <td>
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input toggle-status" id="customSwitches{{ $product->id }}" data-id="{{ $product->id }}" {{ $product->status ? 'checked' : '' }}>
@@ -66,7 +66,7 @@
                         @include('product.edit')
                         <a href="" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#show-{{ $product->id }}"><i class="icon-copy dw dw-eye"></i></a>
                         @include('product.show')
-                        <form action="{{ route('product.destroy',['product'=>$product->id]) }}" method="POST" class="d-inline-block" id="delete-form-{{ $product->id }}">
+                        <form action="{{ route('product.destroy', ['product' => $product->id]) }}" method="POST" class="d-inline-block" id="delete-form-{{ $product->id }}">
                             @csrf
                             @method('DELETE')
                             <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $product->id }})"><i class="icon-copy dw dw-trash1"></i></button>
@@ -101,6 +101,10 @@
                 }
                 , success: function(response) {
                     console.log(response);
+                    Toast.fire({
+                        icon: 'success'
+                        , title: 'Status updated successfully'
+                    });
                 }
                 , error: function(xhr, status, error) {
                     console.error(xhr.responseText);
@@ -109,12 +113,24 @@
         });
     });
 
+    const Toast = Swal.mixin({
+        toast: true
+        , position: 'top-end'
+        , showConfirmButton: false
+        , timer: 3000
+        , timerProgressBar: true
+        , didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+
 </script>
 <script>
-    function confirmDelete(pataint) {
+    function confirmDelete(productId) {
         Swal.fire({
             title: "Are you sure?"
-            , text: "You want to delete this record!"
+            , text: "You won't be able to revert this!"
             , icon: "warning"
             , showCancelButton: true
             , confirmButtonColor: "#3085d6"
@@ -123,14 +139,19 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
-                    icon: "success"
-                    , title: "Record deleted successfully"
+                    title: "Deleted!"
+                    , text: "Your file has been deleted."
+                    , icon: "success"
                     , showConfirmButton: false
-                    , timer: 10000
+                    , timer: 3000
                     , timerProgressBar: true
                     , position: "center"
+                    , didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
                 });
-                document.getElementById('delete-form-' + pataint).submit();
+                document.getElementById('delete-form-' + productId).submit();
             }
         });
     }

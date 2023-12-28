@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="form-group col-4">
                             <label for="">Pataint Name</label>
-                            <select name="pataint_id" id="" class="form-control custom-select2" style="width: 100%; height: 38px">
+                            <select name="pataint_id" id="" class="form-control custom-select2" style="width: 100%; height: 35px">
                                 <option value="">Select Pataint...</option>
                                 @foreach ($pataints as $pataint)
                                 <option value="{{ $pataint->id }}">{{ $pataint->name }}</option>
@@ -58,6 +58,15 @@
                                 <option value="Canceled">Canceled</option>
                             </select>
                         </div>
+                        <div class="form-group col-4">
+                            <label for="">Laboratory</label>
+                            <select name="labo_id" id="" class="form-control" style="width: 100%; height: 35px">
+                                <option value="">Select laboratory</option>
+                                @foreach ($laboratories as $laboratory)
+                                <option value="{{ $laboratory->id }}">{{ $laboratory->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div>
                         <span>
@@ -70,39 +79,3 @@
           </div>
       </div>
   </div>
-{{-- <script>
-    document.getElementById('appointmentForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-        fetch(this.action, {
-            method: this.method,
-            body: new FormData(this)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Appointment created successfully!',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    position: 'top-end'
-                });
-
-                // Optionally, you can redirect the user to another page or perform other actions
-                 window.location.href = '{{ route('appointment.index') }}';
-            } else {
-                // Handle other cases or display an error message
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error creating appointment',
-                    text: 'Please try again later.',
-                    position: 'top-end'
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    });
-</script> --}}
