@@ -78,9 +78,10 @@
                 </div>
             </div>
         </div> --}}
+        @auth
+            <div><a href="{{ route('frontend.home') }}" class="btn btn-outline-primary mt-3">Go to Website</a></div>
         <div class="user-info-dropdown">
             <div class="dropdown">
-                @auth
                 <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                     <span class="user-icon">
                         <img src="{{ asset('uploads/users/2023-11-06-65486f4c69e1d.png') }}" alt />
