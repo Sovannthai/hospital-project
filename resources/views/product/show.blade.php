@@ -26,9 +26,9 @@
                               <dt class="col-sm-5">Code</dt>
                               <dd class="col-sm-7">{{ $product->code }}</dd>
                               <dt class="col-sm-5">Unit</dt>
-                              <dd class="col-sm-7">{{ $product->unit->name }}</dd>
+                              <dd class="col-sm-7">{{ @$product->unit->name }}</dd>
                               <dt class="col-sm-5">Category</dt>
-                              <dd class="col-sm-7">{{ $product->category->name }}</dd>
+                              <dd class="col-sm-7">{{ @$product->category->name }}</dd>
                               <dt class="col-sm-5">Price</dt>
                               <dd class="col-sm-7">$ {{ $product->price }}</dd>
                               <dt class="col-sm-5">Description</dt>

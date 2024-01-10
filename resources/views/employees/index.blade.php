@@ -35,16 +35,17 @@
         @include('employees.create')
     </div>
     <div class="pb-20">
-        <table class="data-table table hover nowrap table-responsive">
+        <table class="data-table table">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
+                    {{-- <th scope="col">ID</th> --}}
                     <th scope="col">Name</th>
                     <th scope="col">Gender</th>
-                    <th scope="col">Marital Status</th>
+                    {{-- <th scope="col">Marital Status</th> --}}
                     <th scope="col">DOB</th>
                     <th scope="col">Group</th>
                     <th scope="col">Phone</th>
+                    <th scope="col">Salary</th>
                     <th scope="col">Join Date</th>
                     <th scope="col">Address</th>
                     <th scope="col">Status</th>
@@ -54,13 +55,14 @@
             <tbody>
                 @forelse ($emps as $emp)
                 <tr>
-                    <td>{{ $emp->id }}</td>
+                    {{-- <td>{{ $emp->id }}</td> --}}
                     <td>{{ $emp->name }}</td>
                     <td>{{ $emp->gender }}</td>
-                    <td>{{ $emp->mt_status }}</td>
+                    {{-- <td>{{ $emp->mt_status }}</td> --}}
                     <td>{{ $emp->dob }}</td>
                     <td>{{ $emp->emp_group->type_name }}</td>
                     <td>{{ $emp->phone }}</td>
+                    <td>$ {{ $emp->salary }}</td>
                     <td>{{ $emp->join_date }}</td>
                     <td>{{ Str::limit($emp->address,10) }}</td>
                     <td>

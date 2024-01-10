@@ -14,7 +14,7 @@ class PataintController extends Controller
      */
     public function index()
     {
-        $pataints = Pataint::all();
+        $pataints = Pataint::orderBy('created_at','desc')->get();
         $pataint1 = Pataint::count();
         return view('pataint.index',compact('pataints','pataint1'));
     }

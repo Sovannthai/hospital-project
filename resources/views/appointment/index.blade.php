@@ -69,7 +69,7 @@
                         {{ $appointment->status }}
                         @endif
                     </td>
-                    <td>{{ $appointment->laboratory->name }}</td>
+                    <td>{{ @$appointment->laboratory->name }}</td>
                     <td>{{ @$appointment->create->name }}</td>
                     <td>
                         <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-{{ $appointment->id }}"><i class="icon-copy dw dw-edit1"></i></a>

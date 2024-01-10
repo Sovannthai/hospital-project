@@ -5,6 +5,10 @@ use Illuminate\Support\ServiceProvider;
 
 return [
 
+    'providers' => [
+        // ...
+        Spatie\Permission\PermissionServiceProvider::class,
+    ],
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -184,4 +188,6 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
+
+
 ];

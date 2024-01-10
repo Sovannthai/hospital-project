@@ -47,6 +47,7 @@ class EmployeeController extends Controller
             $emp->mt_status = $request->mt_status;
             $emp->dob = $request->dob;
             $emp->phone = $request->phone;
+            $emp->salary = $request->salary;
             $emp->join_date = $request->join_date;
             $emp->address = $request->address;
             $emp->status = $request->has('status');
@@ -90,6 +91,7 @@ class EmployeeController extends Controller
             $emp->mt_status = $request->mt_status;
             $emp->dob = $request->dob;
             $emp->phone = $request->phone;
+            $emp->salary = $request->salary;
             $emp->join_date = $request->join_date;
             $emp->address = $request->address;
             $emp->status = $request->has('status');

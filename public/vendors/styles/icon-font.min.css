@@ -4094,7 +4094,10 @@
 }
 
 .bi-plus-circle::before {
-    content: "\f4fa"
+    content: "\f4fa";
+    font-size: 20px;
+    position: relative;
+    left: -30px;
 }
 
 .bi-plus-square-dotted::before {
@@ -6890,7 +6893,10 @@
 }
 
 .dw-user-13:before {
-    content: "\ee55"
+    content: "\ee55";
+    font-size: 20px;
+    position: relative;
+    left: -30px;
 }
 
 .dw-unlock1:before {
@@ -12309,7 +12315,10 @@
 }
 
 .dw-add:before {
-    content: "\ee38"
+    content: "\ee38";
+    /* font-size: 20px;
+    position: relative;
+    left: -30px; */
 }
 
 /*!

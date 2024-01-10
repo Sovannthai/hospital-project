@@ -18,6 +18,7 @@ return new class extends Migration
             $table->enum('mt_status', ['Single', 'Married', 'Widow', 'Optional'])->default('Single');
             $table->date('dob');
             $table->bigInteger('phone')->nullable();
+            $table->decimal('salary', 10, 2);
             $table->date('join_date');
             $table->longText('address');
             $table->boolean('status')->default(true);

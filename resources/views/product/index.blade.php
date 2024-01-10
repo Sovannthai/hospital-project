@@ -51,8 +51,8 @@
                     </td>
                     <td class="table-plus">{{ $product->name }}</td>
                     <td>{{ $product->code }}</td>
-                    <td>{{ $product->unit->name }}</td>
-                    <td>{{ $product->category->name }}</td>
+                    <td>{{ @$product->unit->name }}</td>
+                    <td>{{ @$product->category->name }}</td>
                     <td>$ {{ $product->price }}</td>
                     <td>{{ Str::limit($product->description, 10) }}</td>
                     <td>

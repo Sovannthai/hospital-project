@@ -12,7 +12,7 @@ class DiseasController extends Controller
      */
     public function index()
     {
-        $diseases = Diseas::all();
+        $diseases = Diseas::orderBy('created_at','desc')->get();
         return view('diseas.index',compact('diseases'));
     }
 

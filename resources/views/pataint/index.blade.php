@@ -39,7 +39,7 @@
         <table class="data-table table hover nowrap">
             <thead>
                 <tr>
-                    <th scope="col">No.</th>
+                    {{-- <th scope="col">No.</th> --}}
                         <th scope="col">Name</th>
                         <th scope="col">Gender</th>
                         <th scope="col">DOB</th>
@@ -52,7 +52,7 @@
             <tbody>
                 @forelse ($pataints as $pataint)
                 <tr>
-                    <td>{{ $pataint->id }}</td>
+                    {{-- <td>{{ $pataint->id }}</td> --}}
                         <td>{{ $pataint->name }}</td>
                         <td>{{ $pataint->gender }}</td>
                         <td>{{ $pataint->dob }}</td>

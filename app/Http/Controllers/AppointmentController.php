@@ -20,7 +20,6 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        // $appointments = Appointment::all();
         $diseases = Diseas::all();
         $pataints = Pataint::all();
         $users = User::all();

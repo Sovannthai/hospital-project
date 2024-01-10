@@ -12,6 +12,10 @@
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    {{-- switch --}}
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/switchery/switchery.min.css') }}" /> --}}
+    <!-- bootstrap-tagsinput css -->
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" /> --}}
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -106,14 +110,18 @@
     <!-- js -->
     <script src="vendors/scripts/delete-update.js"></script>
     <script src="vendors/scripts/core.js"></script>
-    <script src="vendors/scripts/script.min.js"></scrip>
-    <script src="vendors/scripts/process.js"></script>
-    <script src="vendors/scripts/layout-settings.   js"></script>
+    <script src="vendors/scripts/script.min.js">
+        </scrip> <
+        script src = "vendors/scripts/process.js" >
+
+    </script>
+    <script src="vendors/scripts/layout-settings.js"></script>
     <script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
     <script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
     <script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
     <script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
     <!-- buttons for Export datatable -->
+    <script src="src/plugins/switchery/switchery.min.js"></script>
     <script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
     <script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
     <script src="src/plugins/datatables/js/buttons.print.min.js"></script>

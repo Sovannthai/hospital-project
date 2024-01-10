@@ -25,6 +25,12 @@
                         <li>
                             <a href="{{ route('usermanagement.usertype.index') }}" class="@if (request()->routeIs('usermanagement.usertype.index'))active @endif" ><span class="icon-copy fa fa-pencil-square-o" aria-hidden="true"></span>User Type</a>
                         </li>
+                        {{-- <li>
+                            <a href="{{ route('role.index') }}" class="@if (request()->routeIs('role.index'))active @endif" ><span class="icon-copy dw dw-user-13"></span>Role</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('add_role') }}" class="@if (request()->routeIs('add_role'))active @endif" ><span class="icon-copy bi bi-plus-circle"></span>Add Role</a>
+                        </li> --}}
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -79,11 +85,11 @@
                         <span class="icon-copy fa fa-industry" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Laboratory</span>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{ route('staff.index') }}" class="dropdown-toggle no-arrow @if (request()->routeIs('staff.index'))active @endif">
                         <span class="icon-copy fa fa-users" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Staff</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>

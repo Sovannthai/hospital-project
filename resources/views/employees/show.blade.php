@@ -23,6 +23,8 @@
                             <dd class="col-sm-7">{{ $emp->emp_group->type_name }}</dd>
                             <dt class="col-sm-5">Phone</dt>
                             <dd class="col-sm-7">{{ $emp->phone }}</dd>
+                            <dt class="col-sm-5">Salary</dt>
+                            <dd class="col-sm-7">$ {{ $emp->salary }}</dd>
                             <dt class="col-sm-5">Join Date</dt>
                             <dd class="col-sm-7">{{ $emp->join_date }}</dd>
                             <dt class="col-sm-5">Address</dt>
