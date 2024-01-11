@@ -1,12 +1,13 @@
+
 <!-- Back to top button -->
-<div class="topbar">
+{{-- <div class="topbar">
     <div class="container">
         <div class="row">
             <div class="col-sm-8 text-sm">
                 <div class="site-info">
                     <a href="#"><span class="mai-call text-primary"></span> +00 123 4455 6666</a>
                     <span class="divider">|</span>
-                    <a href="#"><span class="mai-mail text-primary"></span> mail@example.com</a>
+                    <a href="{{ asset('https://mail.google.com/') }}"><span class="mai-mail text-primary"></span> mail@example.com</a>
                 </div>
             </div>
             <div class="col-sm-4 text-right text-sm">
@@ -19,9 +20,9 @@
             </div>
         </div> <!-- .row -->
     </div> <!-- .container -->
-</div> <!-- .topbar -->
+</div> <!-- .topbar --> --}}
 
-<nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light sticky-navbar shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ route('frontend.home') }}"><img src="{{ asset('uploads/logo/logo3.png') }}" alt="" style="height:60px;"></a>
 
@@ -44,7 +45,7 @@
                     <a class="nav-link @if (request()->routeIs('frontend.home'))active @endif" href="{{ route('frontend.home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('frontend.about-us') }}" class="nav-link @if (request()->routeIs('frontend.about-us'))active @endif">About Us</a>
+                    <a href="{{ route('frontend.product') }}" class="nav-link @if (request()->routeIs('frontend.product'))active @endif">Product</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('frontend.doctor') }}" class="nav-link @if (request()->routeIs('frontend.doctor'))active @endif">Doctors</a>
@@ -53,11 +54,15 @@
                     <a href="{{ route('frontend.blog') }}" class="nav-link @if (request()->routeIs('frontend.blog'))active @endif">News</a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('frontend.about-us') }}" class="nav-link @if (request()->routeIs('frontend.about-us'))active @endif">About Us</a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('frontend.contact') }}" class="nav-link @if (request()->routeIs('frontend.contact'))active @endif">Contact</a>
                 </li>
                 <li class="nav-item">
                     @guest
-                    <a class="btn btn-primary ml-lg-3" href="{{ route('login') }}">Login</a>
+                    <a class="btn btn-primary ml-lg-3" href="" data-toggle="modal" data-target="#login">Login</a>
+                    @include('frontend.auth.login')
                     <a class="btn btn-primary ml-lg-3" href="{{ route('register') }}">Register</a>
                     @else
                     <form action="{{ route('logout') }}" method="POST">

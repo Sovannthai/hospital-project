@@ -21,7 +21,7 @@ $('document').ready(function() {
 $('document').ready(function() {
   $("a[data-role='smoothscroll']").click(function(e) {
     e.preventDefault();
-    
+
     var position = $($(this).attr("href")).offset().top - nav_height;
 
     $("body, html").animate({

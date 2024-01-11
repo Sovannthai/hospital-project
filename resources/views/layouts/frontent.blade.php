@@ -11,15 +11,23 @@
     <link rel="stylesheet" href="{{ asset("../assets/vendor/owl-carousel/css/owl.carousel.css") }}">
     <link rel="stylesheet" href="{{ asset("../assets/vendor/animate/animate.css") }}">
     <link rel="stylesheet" href="{{ asset("../assets/css/theme.css") }}">
-    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 </head>
+<style>
+    .sticky-navbar {
+        position: sticky;
+        top: 0;
+        background-color: white;
+        width: 100%;
+        z-index: 1000;
+    }
+</style>
 <body>
     <div class="back-to-top"></div>
-    <header>
+    <header class="content">
         @include('layouts.frontend.navbar')
     </header>
     @yield('content')
-@include('layouts.frontend.footer')
+    @include('layouts.frontend.footer')
 </body>
 <script src="../assets/js/jquery-3.5.1.min.js"></script>
 <script src="../assets/js/bootstrap.bundle.min.js"></script>

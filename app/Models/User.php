@@ -30,8 +30,9 @@ class User extends Authenticatable
         'salary',
     ];
 
-    public function usertype(){
-        return $this->belongsTo(Usertype::class,'user_type_id');
+    public function usertype()
+    {
+        return $this->belongsTo(Usertype::class, 'user_type_id');
     }
     public function receptionistes()
     {
@@ -39,11 +40,15 @@ class User extends Authenticatable
     }
     public function appointments()
     {
-    return $this->hasMany(Appointment::class);
+        return $this->hasMany(Appointment::class);
     }
     public function pataints()
     {
-    return $this->hasMany(Pataint::class);
+        return $this->hasMany(Pataint::class);
+    }
+    public function frontend()
+    {
+        return $this->hasMany(Frontend::class);
     }
 
     /**

@@ -18,6 +18,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UnitController;
+use App\Models\Diseas;
+use App\Models\Product;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +34,20 @@ use App\Http\Controllers\UnitController;
 */
 
 Route::get('/', function () {
-    return view('frontend.home.index');
+    $diseases = Diseas::all();
+    $products = Product::where('status', 1)->get();
+    $doctors = User::with('usertype')->where('user_type_id', 1)->get();
+    return view('frontend.home.index', compact('diseases', 'doctors', 'products'));
 });
-Route::get('login',function(){
+//Frontent
+Route::get('frontend', [FrontendController::class, 'index'])->name('frontend.index');
+Route::get('front/home', [FrontendController::class, 'home'])->name('frontend.home');
+Route::get('front/about-us', [FrontendController::class, 'aboutus'])->name('frontend.about-us');
+Route::get('front/doctor', [FrontendController::class, 'doctor'])->name('frontend.doctor');
+Route::get('front/blog', [FrontendController::class, 'blog'])->name('frontend.blog');
+Route::get('front/contact', [FrontendController::class, 'contact'])->name('frontend.contact');
+Route::get('front/product', [FrontendController::class, 'product'])->name('frontend.product');
+Route::get('login', function () {
     return view('auth.login');
 });
 
@@ -86,12 +100,4 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/update-status/{id}', [ProductController::class, 'updateStatus'])->name('products.update');
     //Test Route
     Route::resource('staff', StaffController::class);
-
-    //Frontent
-    Route::get('frontend', [FrontendController::class, 'index'])->name('frontend.index');
-    Route::get('front/home', [FrontendController::class, 'home'])->name('frontend.home');
-    Route::get('front/about-us', [FrontendController::class, 'aboutus'])->name('frontend.about-us');
-    Route::get('front/doctor', [FrontendController::class, 'doctor'])->name('frontend.doctor');
-    Route::get('front/blog', [FrontendController::class, 'blog'])->name('frontend.blog');
-    Route::get('front/contact', [FrontendController::class, 'contact'])->name('frontend.contact');
 });

@@ -1,7 +1,25 @@
 @extends('layouts.frontent')
 @section('title','Home')
 @section('content')
-<div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg);">
+<style>
+    .card-doctor {
+        transition: 0.5s;
+    }
+
+    .card-doctor:hover {
+        transform: scale(1.1);
+    }
+
+    .card-service {
+        transition: 0.5s;
+    }
+
+    .card-service:hover {
+        transform: scale(1.1);
+    }
+
+</style>
+<div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg);margin-top:70px;">
     <div class="hero-section">
         <div class="container text-center wow zoomIn">
             <span class="subhead">Let's make your life happier</span>
@@ -10,8 +28,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="bg-light">
     <div class="page-section py-3 mt-md-n5 custom-index">
         <div class="container">
@@ -65,83 +81,24 @@
 <div class="page-section">
     <div class="container">
         <h1 class="text-center mb-5 wow fadeInUp">Our Doctors</h1>
-
         <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">
+            @foreach ($doctors as $doctor)
             <div class="item">
                 <div class="card-doctor">
                     <div class="header">
-                        <img src="../assets/img/doctors/doctor_1.jpg" alt="">
+                        <img src="{{ asset('uploads/users/'.$doctor->image) }}" alt="">
                         <div class="meta">
                             <a href="#"><span class="mai-call"></span></a>
                             <a href="#"><span class="mai-logo-whatsapp"></span></a>
                         </div>
                     </div>
                     <div class="body">
-                        <p class="text-xl mb-0">Dr. Stein Albert</p>
+                        <p class="text-xl mb-0">{{ $doctor->name }}</p>
                         <span class="text-sm text-grey">Cardiology</span>
                     </div>
                 </div>
             </div>
-            <div class="item">
-                <div class="card-doctor">
-                    <div class="header">
-                        <img src="../assets/img/doctors/doctor_2.jpg" alt="">
-                        <div class="meta">
-                            <a href="#"><span class="mai-call"></span></a>
-                            <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                        </div>
-                    </div>
-                    <div class="body">
-                        <p class="text-xl mb-0">Dr. Alexa Melvin</p>
-                        <span class="text-sm text-grey">Dental</span>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="card-doctor">
-                    <div class="header">
-                        <img src="../assets/img/doctors/doctor_3.jpg" alt="">
-                        <div class="meta">
-                            <a href="#"><span class="mai-call"></span></a>
-                            <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                        </div>
-                    </div>
-                    <div class="body">
-                        <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
-                        <span class="text-sm text-grey">General Health</span>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="card-doctor">
-                    <div class="header">
-                        <img src="../assets/img/doctors/doctor_3.jpg" alt="">
-                        <div class="meta">
-                            <a href="#"><span class="mai-call"></span></a>
-                            <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                        </div>
-                    </div>
-                    <div class="body">
-                        <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
-                        <span class="text-sm text-grey">General Health</span>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="card-doctor">
-                    <div class="header">
-                        <img src="../assets/img/doctors/doctor_3.jpg" alt="">
-                        <div class="meta">
-                            <a href="#"><span class="mai-call"></span></a>
-                            <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                        </div>
-                    </div>
-                    <div class="body">
-                        <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
-                        <span class="text-sm text-grey">General Health</span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
@@ -244,15 +201,14 @@
                     <input type="text" class="form-control" placeholder="Email address..">
                 </div>
                 <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-                    <input type="date" class="form-control">
+                    <input type="datetime-local" class="form-control">
                 </div>
                 <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
                     <select name="departement" id="departement" class="custom-select">
                         <option value="general">General Health</option>
-                        <option value="cardiology">Cardiology</option>
-                        <option value="dental">Dental</option>
-                        <option value="neurology">Neurology</option>
-                        <option value="orthopaedics">Orthopaedics</option>
+                        @foreach ($diseases as $disease)
+                        <option value="{{ $disease->id }}">{{ $disease->diseas_name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">

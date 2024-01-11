@@ -1,12 +1,20 @@
 @extends('layouts.frontent')
 @section('title','Doctor')
 @section('content')
+<style>
+    .card-doctor{
+        transition: 0.5s;
+    }
+    .card-doctor:hover{
+        transform: scale(1.1);
+    }
+</style>
 <div class="page-banner overlay-dark bg-image" style="background-image: url(../assets/img/bg_image_1.jpg);">
     <div class="banner-section">
         <div class="container text-center wow fadeInUp">
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('frontend.home') }}">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Doctors</li>
                 </ol>
             </nav>
@@ -22,107 +30,28 @@
 
                 <div class="row">
 
+                    @foreach ($doctors as $doctor)
                     <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
                         <div class="card-doctor">
                             <div class="header">
-                                <img src="../assets/img/doctors/doctor_1.jpg" alt="">
+                                <img src="{{ asset('uploads/users/'.$doctor->image) }}" alt="">
                                 <div class="meta">
                                     <a href="#"><span class="mai-call"></span></a>
                                     <a href="#"><span class="mai-logo-whatsapp"></span></a>
                                 </div>
                             </div>
                             <div class="body">
-                                <p class="text-xl mb-0">Dr. Stein Albert</p>
+                                <p class="text-xl mb-0">{{ $doctor->name }}</p>
                                 <span class="text-sm text-grey">Cardiology</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
-                        <div class="card-doctor">
-                            <div class="header">
-                                <img src="../assets/img/doctors/doctor_2.jpg" alt="">
-                                <div class="meta">
-                                    <a href="#"><span class="mai-call"></span></a>
-                                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                                </div>
-                            </div>
-                            <div class="body">
-                                <p class="text-xl mb-0">Dr. Alexa Melvin</p>
-                                <span class="text-sm text-grey">Dental</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
-                        <div class="card-doctor">
-                            <div class="header">
-                                <img src="../assets/img/doctors/doctor_3.jpg" alt="">
-                                <div class="meta">
-                                    <a href="#"><span class="mai-call"></span></a>
-                                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                                </div>
-                            </div>
-                            <div class="body">
-                                <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
-                                <span class="text-sm text-grey">General Health</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
-                        <div class="card-doctor">
-                            <div class="header">
-                                <img src="../assets/img/doctors/doctor_1.jpg" alt="">
-                                <div class="meta">
-                                    <a href="#"><span class="mai-call"></span></a>
-                                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                                </div>
-                            </div>
-                            <div class="body">
-                                <p class="text-xl mb-0">Dr. Stein Albert</p>
-                                <span class="text-sm text-grey">Cardiology</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
-                        <div class="card-doctor">
-                            <div class="header">
-                                <img src="../assets/img/doctors/doctor_2.jpg" alt="">
-                                <div class="meta">
-                                    <a href="#"><span class="mai-call"></span></a>
-                                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                                </div>
-                            </div>
-                            <div class="body">
-                                <p class="text-xl mb-0">Dr. Alexa Melvin</p>
-                                <span class="text-sm text-grey">Dental</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
-                        <div class="card-doctor">
-                            <div class="header">
-                                <img src="../assets/img/doctors/doctor_3.jpg" alt="">
-                                <div class="meta">
-                                    <a href="#"><span class="mai-call"></span></a>
-                                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                                </div>
-                            </div>
-                            <div class="body">
-                                <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
-                                <span class="text-sm text-grey">General Health</span>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
-
             </div>
         </div>
-    </div> <!-- .container -->
+    </div>
+</div> <!-- .container -->
 </div> <!-- .page-section -->
 
 <div class="page-section">

@@ -28,7 +28,6 @@
                     <div class="text-center">
                         <img src="{{ asset('uploads/logo/logo3.png') }}" alt="" style="width: 200px;" class="mt-4">
                     </div>
-
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf

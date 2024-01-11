@@ -2,36 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Diseas;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
 
 class FrontendController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        return view('layouts.frontent');
-    }
+    // public function index()
+    // {
+    //     $diseases = Diseas::all();
+    //     return view('layouts.frontent',compact('diseases'));
+    // }
 
     public function home()
     {
-        return view('frontend.home.index');
+        $doctors = User::with('usertype')->where('user_type_id', 1)->get();
+        $diseases = Diseas::all();
+        return view('frontend.home.index',compact('diseases','doctors'));
     }
 
     public function aboutus()
     {
-        return view('frontend.about.index');
+        $doctors = User::with('usertype')->where('user_type_id', 1)->limit(3)->get();
+        return view('frontend.about.index',compact('doctors'));
     }
 
     public function doctor()
     {
-        return view('frontend.doctor.index');
+        $doctors = User::with('usertype')->where('user_type_id', 1)->get();
+        return view('frontend.doctor.index',compact('doctors'));
     }
 
     public function blog()
@@ -42,6 +46,12 @@ class FrontendController extends Controller
     public function contact()
     {
         return view('frontend.contact.index');
+    }
+
+    public function product()
+    {
+        $products = Product::where('status',1)->get();
+        return view('frontend.product.index',compact('products'));
     }
     /**
      * Show the form for creating a new resource.
