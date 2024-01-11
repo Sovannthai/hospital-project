@@ -19,7 +19,7 @@
     }
 
 </style>
-<div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg);margin-top:70px;">
+<div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg);margin-top:0px;">
     <div class="hero-section">
         <div class="container text-center wow zoomIn">
             <span class="subhead">Let's make your life happier</span>

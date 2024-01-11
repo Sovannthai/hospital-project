@@ -23,7 +23,7 @@
 </style>
 <body>
     <div class="back-to-top"></div>
-    <header class="content">
+    <header class="content sticky-navbar">
         @include('layouts.frontend.navbar')
     </header>
     @yield('content')

@@ -24,7 +24,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light sticky-navbar shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('frontend.home') }}"><img src="{{ asset('uploads/logo/logo3.png') }}" alt="" style="height:60px;"></a>
+        <a class="navbar-brand" href="{{ route('frontend.home') }}"><img src="{{ asset('uploads/logo/logo3.png') }}" alt="" style="height:70px;"></a>
 
         {{-- <form action="#">
             <div class="input-group input-navbar">

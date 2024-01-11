@@ -9,7 +9,7 @@
     }
 </style>
 @section('content')
-<div class="page-banner overlay-dark bg-image" style="background-image: url(../assets/img/bg_image_1.jpg);">
+<div class="page-banner overlay-dark bg-image" style="background-image: url(../assets/img/bg_image_1.jpg);margin-top:0px;">
     <div class="banner-section">
         <div class="container text-center wow fadeInUp">
             <nav aria-label="Breadcrumb">
