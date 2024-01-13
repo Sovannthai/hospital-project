@@ -16,6 +16,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        
         $emp = Employee::count();
         $appointment = Appointment::count();
         $pataint = Pataint::count();

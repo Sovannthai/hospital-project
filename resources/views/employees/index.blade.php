@@ -31,8 +31,10 @@
 @endif
 <div class="card-box mb-30">
     <div class="pd-20">
+        @if (auth()->user()->can('create.emp'))
         <a href="" class="btn btn-primary mb-2" data-toggle="modal" data-target="#create"><i class="icon-copy dw dw-add-user"> Add Employee</i></a>
         @include('employees.create')
+        @endif
     </div>
     <div class="pb-20">
         <table class="data-table table">
@@ -60,27 +62,33 @@
                     <td>{{ $emp->gender }}</td>
                     {{-- <td>{{ $emp->mt_status }}</td> --}}
                     <td>{{ $emp->dob }}</td>
-                    <td>{{ $emp->emp_group->type_name }}</td>
+                    <td>{{ @$emp->emp_group->type_name }}</td>
                     <td>{{ $emp->phone }}</td>
                     <td>$ {{ $emp->salary }}</td>
                     <td>{{ $emp->join_date }}</td>
                     <td>{{ Str::limit($emp->address,10) }}</td>
                     <td>
+                        @if (auth()->user()->can('edit.emp'))
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input toggle-status" id="customSwitches{{ $emp->id }}" data-id="{{ $emp->id }}" {{ $emp->status ? 'checked' : '' }}>
                             <label class="custom-control-label" for="customSwitches{{ $emp->id }}"></label>
                         </div>
+                        @endif
                     </td>
                     <td>
+                        @if (auth()->user()->can('edit.emp'))
                         <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-{{ $emp->id }}"><i class="icon-copy dw dw-edit1"></i></a>
                         @include('employees.edit')
+                        @endif
                         <a href="" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#show-{{ $emp->id }}"><i class="icon-copy dw dw-eye"></i></a>
                         @include('employees.show')
+                        @if (auth()->user()->can('delete.emp'))
                         <form action="{{ route('employee.destroy',['employee'=>$emp->id]) }}" method="POST" class="d-inline-block" id="delete-form-{{ $emp->id }}">
                             @csrf
                             @method('DELETE')
                             <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $emp->id }})"><i class="icon-copy dw dw-trash1"></i></button>
                         </form>
+                        @endif
                     </td>
                 </tr>
                 @empty

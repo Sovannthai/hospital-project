@@ -115,7 +115,7 @@
         script src = "vendors/scripts/process.js" >
 
     </script>
-    <script src="vendors/scripts/layout-settings.js"></script>
+    {{-- <script src="vendors/scripts/layout-settings.js"></script> --}}
     <script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
     <script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
     <script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>

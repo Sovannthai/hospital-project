@@ -1,4 +1,15 @@
 {{-- Header --}}
+<style>
+
+    .website{
+        /* border-radius: 15px 0 15px 0; */
+        transition: 0.5s;
+    }
+    .website:hover{
+        transform: 1.5s;
+        transform: translateY(-10px);
+    }
+</style>
 <div class="header">
     <div class="header-left">
         <div class="menu-icon bi bi-list"></div>
@@ -79,7 +90,7 @@
             </div>
         </div> --}}
         @auth
-            <div><a href="{{ route('frontend.home') }}" class="btn btn-outline-primary mt-3">Go to Website</a></div>
+            <div><a href="{{ route('frontend.home') }}" class="btn btn-outline-primary mt-3 website">Go to Website</a></div>
         <div class="user-info-dropdown">
             <div class="dropdown">
                 <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">

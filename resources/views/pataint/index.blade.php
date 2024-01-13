@@ -32,8 +32,10 @@
 @endif
 <div class="card-box mb-30">
     <div class="pd-20">
+        @if (auth()->user()->can('create.pataint'))
         <a href="" class="btn btn-primary mb-2"  data-toggle="modal" data-target="#create"><i class="icon-copy dw dw-add-user"> Add Pataint</i></a>
         @include('pataint.create')
+        @endif
     </div>
     <div class="pb-20">
         <table class="data-table table hover nowrap">
@@ -60,15 +62,19 @@
                         <td>{{ $pataint->address }}</td>
                         <td>{{ $pataint->create->name }}</td>
                         <td>
+                            @if (auth()->user()->can('edit.pataint'))
                             <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-{{ $pataint->id }}"><i class="icon-copy dw dw-edit1"></i></a>
                             @include('pataint.edit')
+                            @endif
                             <a href="" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#show-{{ $pataint->id }}"><i class="icon-copy dw dw-eye"></i></a>
                             @include('pataint.show')
+                            @if (auth()->user()->can('delete.pataint'))
                             <form action="{{ route('pataint.destroy',['pataint'=>$pataint->id]) }}" method="POST" class="d-inline-block" id="delete-form-{{ $pataint->id }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $pataint->id }})"><i class="icon-copy dw dw-trash1"></i></button>
                             </form>
+                            @endif
                         </td>
                 </tr>
                 @empty

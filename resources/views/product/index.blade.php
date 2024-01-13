@@ -25,8 +25,10 @@
 @endif
 <div class="card-box mb-30">
     <div class="pd-20">
+        @if (auth()->user()->can('create.product'))
         <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#create"><i class="icon-copy dw dw-add"> Add New</i></a>
         @include('product.create')
+        @endif
     </div>
     <div class="pb-20">
         <table class="data-table table hover nowrap">
@@ -62,15 +64,19 @@
                         </div>
                     </td>
                     <td>
+                        @if (auth()->user()->can('edit.product'))
                         <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-{{ $product->id }}"><i class="icon-copy dw dw-edit1"></i></a>
                         @include('product.edit')
+                        @endif
                         <a href="" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#show-{{ $product->id }}"><i class="icon-copy dw dw-eye"></i></a>
                         @include('product.show')
+                        @if (auth()->user()->can('delete.product'))
                         <form action="{{ route('product.destroy', ['product' => $product->id]) }}" method="POST" class="d-inline-block" id="delete-form-{{ $product->id }}">
                             @csrf
                             @method('DELETE')
                             <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $product->id }})"><i class="icon-copy dw dw-trash1"></i></button>
                         </form>
+                        @endif
                     </td>
                 </tr>
                 @empty

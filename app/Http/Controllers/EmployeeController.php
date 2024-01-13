@@ -13,6 +13,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
+        if (!auth()->user()->can('view.emp')) {
+            abort(403, 'Unauthorized action.');
+        }
         $emp1 = Employee::count();
         $emps = Employee::all();
         $emp_groups = Employeegroup::where('status',1)->get();
@@ -32,6 +35,9 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        if (!auth()->user()->can('create.emp')) {
+            abort(403, 'Unauthorized action.');
+        }
         $request->validate([
             'name' => 'required|min:5',
             'dob' => 'required',
@@ -83,6 +89,9 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        if (!auth()->user()->can('edit.emp')) {
+            abort(403, 'Unauthorized action.');
+        }
         try
         {
             $emp = Employee::findOrFail($id);
@@ -122,6 +131,9 @@ class EmployeeController extends Controller
      */
     public function destroy(string $id)
     {
+        if (!auth()->user()->can('delete.emp')) {
+            abort(403, 'Unauthorized action.');
+        }
         $emp = Employee::findOrFail($id);
         if($emp->delete())
         {

@@ -15,7 +15,8 @@
     }
 
     .card-service:hover {
-        transform: scale(1.1);
+        transform: 1.5s;
+        transform: translateY(-15px);
     }
 
 </style>

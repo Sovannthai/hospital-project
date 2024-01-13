@@ -25,8 +25,9 @@
 @endif
 <div class="card-box mb-30">
     <div class="pd-20">
+        @if (auth()->user()->can('create.role'))
         <a href="{{ route('add_role') }}" class="btn btn-primary btn-sm"><i class="icon-copy dw dw-add"> Add New</i></a>
-        {{-- @include('role.create') --}}
+        @endif
     </div>
     <div class="pb-20">
         <table class="data-table table hover nowrap">
@@ -41,13 +42,16 @@
                 <tr>
                     <td class="table-plus">{{ $role->name }}</td>
                     <td>
-                        <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-{{ $role->id }}"><i class="icon-copy dw dw-edit1"></i></a>
-                    @include('role.edit')
-                        <form action="" method="POST" class="d-inline-block" id="delete-form-{{ $role->id }}">
+                        @if (auth()->user()->can('edit.role'))
+                        <a href="{{ route('edit_role',['id'=>$role->id]) }}" class="btn btn-primary btn-sm"><i class="icon-copy dw dw-edit1"></i></a>
+                        @endif
+                        @if (auth()->user()->can('delete.role'))
+                        <form action="{{ route('destroy_role',['id'=>$role->id]) }}" method="POST" class="d-inline-block" id="delete-form-{{ $role->id }}">
                             @csrf
                             @method('DELETE')
                             <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $role->id }})"><i class="icon-copy dw dw-trash1"></i></button>
                         </form>
+                        @endif
                     </td>
                 </tr>
                 @empty

@@ -1,4 +1,3 @@
-
 <!-- Back to top button -->
 {{-- <div class="topbar">
     <div class="container">
@@ -8,21 +7,64 @@
                     <a href="#"><span class="mai-call text-primary"></span> +00 123 4455 6666</a>
                     <span class="divider">|</span>
                     <a href="{{ asset('https://mail.google.com/') }}"><span class="mai-mail text-primary"></span> mail@example.com</a>
-                </div>
-            </div>
-            <div class="col-sm-4 text-right text-sm">
-                <div class="social-mini-button">
-                    <a href="#"><span class="mai-logo-facebook-f"></span></a>
-                    <a href="#"><span class="mai-logo-twitter"></span></a>
-                    <a href="#"><span class="mai-logo-dribbble"></span></a>
-                    <a href="#"><span class="mai-logo-instagram"></span></a>
-                </div>
-            </div>
-        </div> <!-- .row -->
-    </div> <!-- .container -->
+</div>
+</div>
+<div class="col-sm-4 text-right text-sm">
+    <div class="social-mini-button">
+        <a href="#"><span class="mai-logo-facebook-f"></span></a>
+        <a href="#"><span class="mai-logo-twitter"></span></a>
+        <a href="#"><span class="mai-logo-dribbble"></span></a>
+        <a href="#"><span class="mai-logo-instagram"></span></a>
+    </div>
+</div>
+</div> <!-- .row -->
+</div> <!-- .container -->
 </div> <!-- .topbar --> --}}
+<style>
+    .nav-item {
+        transition: 0.5s;
+    }
 
-<nav class="navbar navbar-expand-lg navbar-light sticky-navbar shadow-sm">
+    .nav-item:hover {
+        transform: 1s;
+        transform: translateY(-10px);
+    }
+
+    /* nav {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        background-color: #333;
+        overflow: hidden;
+    } */
+
+    .nav-item {
+        float: left;
+    }
+
+    a.nav-link {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        /* Add transition for smooth effect */
+    }
+
+    /* Change background color on hover */
+    a.nav-link:hover {
+        border-radius: 20px 0 20px 0;
+        background-color: #00D9A5;
+    }
+
+    /* Change background color on active (when clicked) */
+    a.nav-link:active {
+        /* background-color: #666; */
+    }
+
+</style>
+<nav class="navbar navbar-expand-lg navbar-light sticky-navbar shadow-sm" style="height: 80px;">
     <div class="container">
         <a class="navbar-brand" href="{{ route('frontend.home') }}"><img src="{{ asset('uploads/logo/logo3.png') }}" alt="" style="height:70px;"></a>
 

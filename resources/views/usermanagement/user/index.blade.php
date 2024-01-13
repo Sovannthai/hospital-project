@@ -2,8 +2,10 @@
 @section('title','User')
 @section('content-header','User List')
 @section('content')
+@if (auth()->user()->can('create.role'))
 <a href="" class="btn btn-primary mb-2" data-toggle="modal" data-target="#create"><i class="icon-copy dw dw-add-user"> Add New</i></a>
 @include('usermanagement.user.create')
+@endif
 @if (session()->has('store'))
 <div class="alert alert-success alert-dismissible">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -39,6 +41,7 @@
                     <th></th>
                     <th>Prefix</th>
                     <th>Name</th>
+                    <th>Role</th>
                     <th>User Type</th>
                     <th>Salary</th>
                     <th>Action</th>
@@ -50,17 +53,22 @@
                     <td><img src="{{ asset('uploads/users/'.$user->image) }}" alt="" style="width: 65px; height:70px;"></td>
                     <td>{{ @$user->prefix }}</td>
                     <td>{{@$user->name }}</td>
+                    <td>{{ @$user->roles->first()->name }}</td>
                     <td>{{ @$user->usertype->type_name }}</td>
                     <td>$ {{ @$user->salary }}</td>
                     <td>
                         <div class="d-flex">
+                            @if (auth()->user()->can('edit.user'))
                             <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-{{ $user->id }}"><i class="icon-copy dw dw-edit1"></i></a>
                             @include('usermanagement.user.edit')
+                            @endif
+                            @if (auth()->user()->can('delete.user'))
                             <form action="{{ route('usermanagement.user.destroy',['id'=>$user->id]) }}" method="POST" class="d-inline-block " id="delete-form-{{ $user->id }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $user->id }})"><i class="icon-copy dw dw-trash1"></i></button>
                             </form>
+                            @endif
                         </div>
                     </td>
                 </tr>

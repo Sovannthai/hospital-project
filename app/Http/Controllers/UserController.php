@@ -8,6 +8,7 @@ use App\Models\Users;
 use App\Models\Usertype;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -18,7 +19,8 @@ class UserController extends Controller
     {
         $usertypes = Usertype::all();
         $users = User::all();
-        return view('usermanagement.user.index', compact('usertypes', 'users'));
+        $roles = Role::all();
+        return view('usermanagement.user.index', compact('usertypes', 'users', 'roles'));
     }
 
     /**
@@ -42,6 +44,9 @@ class UserController extends Controller
         $users->user_type_id = $request->input('user_type_id');
         $users->salary = $request->input('salary');
 
+        $role = Role::findOrFail($request->role);
+        $users->assignRole($role->name);
+
         if ($request->has('image')) {
             $image = $request->file('image');
             $extension = $image->getClientOriginalExtension();
@@ -51,7 +56,7 @@ class UserController extends Controller
         }
 
         $users->save();
-        return redirect()->route('usermanagement.user.index')->with('store','User create successfully !');
+        return redirect()->route('usermanagement.user.index')->with('store', 'User create successfully !');
     }
 
     /**
@@ -85,6 +90,9 @@ class UserController extends Controller
         $user->user_type_id = $request->input('user_type_id');
         $user->salary = $request->input('salary');
 
+        $role = Role::findOrFail($request->role);
+        $user->assignRole($role->name);
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $extension = $image->getClientOriginalExtension();
@@ -95,7 +103,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('usermanagement.user.index')->with('update','User update successfully !');
+        return redirect()->route('usermanagement.user.index')->with('update', 'User update successfully !');
     }
 
     /**

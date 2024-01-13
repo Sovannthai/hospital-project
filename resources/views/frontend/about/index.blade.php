@@ -8,11 +8,13 @@
     .card-doctor:hover{
         transform: scale(1.1);
     }
-    .card-service{
+    .card-service {
         transition: 0.5s;
     }
-    .card-service:hover{
-        transform: scale(1.1);
+
+    .card-service:hover {
+        transform: 1.5s;
+        transform: translateY(-35px);
     }
 </style>
 <div class="page-banner overlay-dark bg-image" style="background-image: url(../assets/img/bg_image_1.jpg);margin-top:0px;">

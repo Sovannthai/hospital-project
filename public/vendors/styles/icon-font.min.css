@@ -9207,7 +9207,10 @@
 }
 
 .dw-phone-call:before {
-    content: "\eb32"
+    content: "\eb32";
+    font-size: 20px;
+    position: relative;
+    left: -45px;
 }
 
 .dw-phone-call-1:before {

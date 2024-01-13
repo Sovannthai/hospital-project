@@ -57,6 +57,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/all_permission', 'AllRole')->name('role.index');
         Route::get('/add_permission', 'AddRole')->name('add_role');
         Route::post('/store_permission', 'StoreRole')->name('store_role');
+        Route::get('/edit_role/{id}', 'EditRole')->name('edit_role');
+        Route::put('/update_role/{id}', 'UpdateRole')->name('update_role');
+        Route::delete('/delete/{id}','DestroyRole')->name('destroy_role');
     });
     Route::get('/home', [DashboardController::class, 'index'])->name('home');
     Route::resource('/laboratory', LaboratoryController::class);

@@ -20,7 +20,7 @@
                             <dt class="col-sm-5">Data Of Birth</dt>
                             <dd class="col-sm-7">{{ $emp->dob }}</dd>
                             <dt class="col-sm-5">Group</dt>
-                            <dd class="col-sm-7">{{ $emp->emp_group->type_name }}</dd>
+                            <dd class="col-sm-7">{{ @$emp->emp_group->type_name }}</dd>
                             <dt class="col-sm-5">Phone</dt>
                             <dd class="col-sm-7">{{ $emp->phone }}</dd>
                             <dt class="col-sm-5">Salary</dt>

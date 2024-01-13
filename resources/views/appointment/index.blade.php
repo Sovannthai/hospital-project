@@ -31,8 +31,10 @@
 @endif
 <div class="card-box mb-30">
     <div class="pd-20">
+        @if (auth()->user()->can('create.appointment'))
         <a href="" class="btn btn-primary mb-2" data-toggle="modal" data-target="#create"><i class="icon-copy dw dw-add"> Add New</i></a>
         @include('appointment.create')
+        @endif
     </div>
     <div class="pb-20">
         <table class="data-table table hover  nowrap">
@@ -72,15 +74,19 @@
                     <td>{{ @$appointment->laboratory->name }}</td>
                     <td>{{ @$appointment->create->name }}</td>
                     <td>
+                        @if (auth()->user()->can('edit.appointment'))
                         <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit-{{ $appointment->id }}"><i class="icon-copy dw dw-edit1"></i></a>
                         @include('appointment.edit')
+                        @endif
                         <a href="" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#show-{{ $appointment->id }}"><i class="icon-copy dw dw-eye"></i></a>
                         @include('appointment.show')
+                        @if (auth()->user()->can('delete.appointment'))
                         <form action="{{ route('appointment.destroy',['id'=>$appointment->id]) }}" method="POST" class="d-inline-block" id="delete-form-{{ $appointment->id }}">
                             @csrf
                             @method('DELETE')
                             <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $appointment->id }})"><i class="icon-copy dw dw-trash1"></i></button>
                         </form>
+                        @endif
                     </td>
                 </tr>
                 @empty

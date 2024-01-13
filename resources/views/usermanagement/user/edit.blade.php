@@ -45,6 +45,15 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group col-4">
+                            <label for="">Role</label>
+                            <select name="role" id="role" class="form-control">
+                                <option value="">Select type...</option>
+                                @foreach ($roles as $role )
+                                <option value="{{ $role->id }}"{{ $user->roles->contains($role->id) ? 'selected' : '' }}>{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="file">File</label>

@@ -5,11 +5,20 @@
 <style>
     .home-dash{
         transition: 0.5s;
-    }   
+    }
     .home-dash:hover{
-        transform: scale(1.1);
+        transform: 1.5s;
+        transform: translateY(-15px);
+    }
+    .home-dash-3{
+        transition: 0.5s;
+    }
+    .home-dash-3:hover{
+        transform: 1.5s;
+        transform: translateY(15px);
     }
 </style>
+@if (auth()->user()->can('view.dash'))
 <div class="row pb-10 mt-4">
     <div class="col-xl-3 col-lg-3 col-md-6 mb-20 home-dash">
         <div class="card-box height-100-p widget-style3">
@@ -64,7 +73,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-3 col-md-6 mb-20 home-dash">
+    {{-- <div class="col-xl-3 col-lg-3 col-md-6 mb-20 home-dash">
         <div class="card-box height-100-p widget-style3">
             <div class="d-flex flex-wrap">
                 <div class="widget-data">
@@ -82,7 +91,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="col-xl-3 col-lg-3 col-md-6 mb-20 home-dash">
         <div class="card-box height-100-p widget-style3">
             <div class="d-flex flex-wrap">
@@ -100,7 +109,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-3 col-md-6 mb-20 home-dash">
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20 home-dash-3">
         <div class="card-box height-100-p widget-style3">
             <div class="d-flex flex-wrap">
                 <div class="widget-data">
@@ -117,7 +126,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-3 col-md-6 mb-20 home-dash">
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20 home-dash-3">
         <div class="card-box height-100-p widget-style3">
             <div class="d-flex flex-wrap">
                 <div class="widget-data">
@@ -134,7 +143,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-3 col-md-6 mb-20 home-dash">
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20 home-dash-3">
         <div class="card-box height-100-p widget-style3">
             <div class="d-flex flex-wrap">
                 <div class="widget-data">
@@ -150,4 +159,5 @@
         </div>
     </div>
 </div>
+@endif
 @endsection
