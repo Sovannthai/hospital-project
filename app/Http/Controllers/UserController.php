@@ -7,7 +7,6 @@ use Carbon\Carbon;
 use App\Models\Users;
 use App\Models\Usertype;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
