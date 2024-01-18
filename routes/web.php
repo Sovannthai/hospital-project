@@ -10,6 +10,7 @@ use App\Http\Controllers\UsertypeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EmployeegroupController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\LaboratoryController;
@@ -46,6 +47,7 @@ Route::get('front/about-us', [FrontendController::class, 'aboutus'])->name('fron
 Route::get('front/doctor', [FrontendController::class, 'doctor'])->name('frontend.doctor');
 Route::get('front/blog', [FrontendController::class, 'blog'])->name('frontend.blog');
 Route::get('front/contact', [FrontendController::class, 'contact'])->name('frontend.contact');
+Route::post('/front/contact',[FrontendController::class,'contactStore'])->name('frontend.add_contact');
 Route::get('front/product', [FrontendController::class, 'product'])->name('frontend.product');
 Route::get('login', function () {
     return view('auth.login');
@@ -102,5 +104,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/product', ProductController::class);
     Route::post('/update-status/{id}', [ProductController::class, 'updateStatus'])->name('products.update');
     //Test Route
-    Route::resource('staff', StaffController::class);
+    // Route::resource('staff', StaffController::class);
+    //Contact
+    Route::get('contact',[ContactController::class,'index'])->name('contact.index');
 });

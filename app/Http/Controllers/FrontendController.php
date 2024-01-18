@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\User;
 use App\Models\Diseas;
 use App\Models\Product;
@@ -23,19 +24,19 @@ class FrontendController extends Controller
     {
         $doctors = User::with('usertype')->where('user_type_id', 1)->get();
         $diseases = Diseas::all();
-        return view('frontend.home.index',compact('diseases','doctors'));
+        return view('frontend.home.index', compact('diseases', 'doctors'));
     }
 
     public function aboutus()
     {
         $doctors = User::with('usertype')->where('user_type_id', 1)->limit(3)->get();
-        return view('frontend.about.index',compact('doctors'));
+        return view('frontend.about.index', compact('doctors'));
     }
 
     public function doctor()
     {
         $doctors = User::with('usertype')->where('user_type_id', 1)->get();
-        return view('frontend.doctor.index',compact('doctors'));
+        return view('frontend.doctor.index', compact('doctors'));
     }
 
     public function blog()
@@ -48,10 +49,25 @@ class FrontendController extends Controller
         return view('frontend.contact.index');
     }
 
+    public function contactStore(Request $request)
+    {
+        try {
+            $contact = new Contact();
+            $contact->fullName = $request->fullName;
+            $contact->email = $request->email;
+            $contact->subject = $request->subject;
+            $contact->message = $request->message;
+            $contact->save();
+            return redirect()->route('frontend.contact')->with('store', 'Your contact has been send successfully');
+        } catch (\Exception $e) {
+            return redirect()->route('frontend.contact')->with('error', 'Something went wrong!');
+        }
+    }
+
     public function product()
     {
-        $products = Product::where('status',1)->get();
-        return view('frontend.product.index',compact('products'));
+        $products = Product::where('status', 1)->get();
+        return view('frontend.product.index', compact('products'));
     }
     /**
      * Show the form for creating a new resource.

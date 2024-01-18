@@ -109,7 +109,7 @@
                     </a>
                 </li> --}}
                 <li>
-                    <a href="" class="dropdown-toggle no-arrow @if (request()->routeIs())active @endif">
+                    <a href="{{ route('contact.index') }}" class="dropdown-toggle no-arrow @if (request()->routeIs('contact.index'))active @endif">
                         <span class="icon-copy dw dw-phone-call" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Contact</span>
                     </a>
                 </li>

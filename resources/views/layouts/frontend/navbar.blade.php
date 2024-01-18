@@ -1,5 +1,5 @@
 <!-- Back to top button -->
-{{-- <div class="topbar">
+<div class="topbar">
     <div class="container">
         <div class="row">
             <div class="col-sm-8 text-sm">
@@ -19,7 +19,7 @@
 </div>
 </div> <!-- .row -->
 </div> <!-- .container -->
-</div> <!-- .topbar --> --}}
+</div> <!-- .topbar -->
 <style>
     .nav-item {
         transition: 0.5s;
