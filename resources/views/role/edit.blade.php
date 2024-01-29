@@ -330,6 +330,44 @@
                 </div>
             </div>
             <hr>
+            <div class="product">Blog</div>
+            <div class="row">
+                <div class="custom-control col-3 custom-switch">
+                    <label for="" style="position: absolute">View</label>
+                    <input type="checkbox" name="permissions[]" value="view.blog" @if (in_array('view.blog', $role_permissions)) checked @endif class="custom-control-input toggle-status" id="blog" data-id="">
+                    <label class="custom-control-label" for="blog"></label>
+                </div>
+                <div class="custom-control col-3 custom-switch">
+                    <label for="" style="position: absolute">Create</label>
+                    <input type="checkbox" name="permissions[]" value="create.blog" @if (in_array('create.blog', $role_permissions)) checked @endif class="custom-control-input toggle-status" id="blog1" data-id="">
+                    <label class="custom-control-label" for="blog1"></label>
+                </div>
+                <div class="custom-control col-3 custom-switch">
+                    <label for="" style="position: absolute">Edit</label>
+                    <input type="checkbox" name="permissions[]" value="edit.blog" @if (in_array('edit.blog', $role_permissions)) checked @endif class="custom-control-input toggle-status" id="blog2" data-id="">
+                    <label class="custom-control-label" for="blog2"></label>
+                </div>
+                <div class="custom-control col-3 custom-switch">
+                    <label for="" style="position: absolute">Delete</label>
+                    <input type="checkbox" name="permissions[]" value="delete.blog" @if (in_array('delete.blog', $role_permissions)) checked @endif class="custom-control-input toggle-status" id="blog3" data-id="">
+                    <label class="custom-control-label" for="blog3"></label>
+                </div>
+            </div>
+            <hr>
+            <div class="product">Contact</div>
+            <div class="row">
+                <div class="custom-control col-3 custom-switch">
+                    <label for="" style="position: absolute">View</label>
+                    <input type="checkbox" name="permissions[]" value="view.contact" @if (in_array('view.contact', $role_permissions)) checked @endif class="custom-control-input toggle-status" id="contact" data-id="">
+                    <label class="custom-control-label" for="contact"></label>
+                </div>
+                <div class="custom-control col-3 custom-switch">
+                    <label for="" style="position: absolute">Delete</label>
+                    <input type="checkbox" name="permissions[]" value="delete.contact" @if (in_array('delete.contact', $role_permissions)) checked @endif class="custom-control-input toggle-status" id="contact3" data-id="">
+                    <label class="custom-control-label" for="contact3"></label>
+                </div>
+            </div>
+            <hr>
             <button class="btn btn-success mb-3" style="position: relative;left:1080px;">Update</button>
         </form>
     </div>

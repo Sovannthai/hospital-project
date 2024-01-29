@@ -27,10 +27,10 @@
     <div class="pd-20">
     </div>
     <div class="pb-20">
-        <table class="data-table table hover nowrap">
-            <thead>
+        <table class="data-table table hover">
+            <thead class="table-secondary">
                 <tr>
-                    <th>ID</th>
+                    {{-- <th>ID</th> --}}
                     <th class="table-plus datatable-nosort">Name</th>
                     <th class="table-plus datatable-nosort">Email</th>
                     <th class="table-plus datatable-nosort">Subject</th>
@@ -41,21 +41,21 @@
             <tbody>
                 @forelse ($contacts as $contact)
                 <tr>
-                    <td>{{ $contact->id }}</td>
+                    {{-- <td>{{ $contact->id }}</td> --}}
                     <td class="table-plus">{{ $contact->fullName }}</td>
                     <td class="table-plus">{{ $contact->email }}</td>
                     <td class="table-plus">{{ $contact->subject }}</td>
-                    <td class="table-plus">{{ $contact->message }}</td>
+                    <td class="table-plus">{{ Str::limit($contact->message,20) }}</td>
                     <td>
                         <a href="" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#show-{{ $contact->id }}"><i class="icon-copy dw dw-eye"></i></a>
                         @include('contact.show')
-                        {{-- @if (auth()->user()->can('delete.labo')) --}}
+                        @if (auth()->user()->can('delete.contact'))
                         <form action="" method="POST" class="d-inline-block" id="delete-form-{{ $contact->id }}">
                             @csrf
                             @method('DELETE')
                             <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $contact->id }})"><i class="icon-copy dw dw-trash1"></i></button>
                         </form>
-                        {{-- @endif --}}
+                        @endif
                     </td>
                 </tr>
                 @empty

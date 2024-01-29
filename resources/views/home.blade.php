@@ -2,6 +2,20 @@
 @section('title','Hospital')
 @section('content-header','Dashboard')
 @section('content')
+@if (session()->has('update'))
+<div class="alert alert-info alert-dismissible">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Success!</strong> {{ session('update') ?? '' }}
+</div>
+</div>
+@endif
+@if (session()->has('delete'))
+<div class="alert alert-danger alert-dismissible">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Success!</strong> {{ session('error') ?? '' }}
+</div>
+</div>
+@endif
 <style>
     .home-dash{
         transition: 0.5s;

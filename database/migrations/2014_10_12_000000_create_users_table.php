@@ -21,6 +21,9 @@ return new class extends Migration
             $table->longtext('image')->nullable();
             $table->decimal('salary',10,20)->nullable();
             $table->integer('user_type_id')->nullable();
+            $table->string('skill')->nullable();
+            $table->longText('address')->nullable();
+            $table->text('phone')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

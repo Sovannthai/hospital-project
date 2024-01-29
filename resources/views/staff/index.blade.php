@@ -36,7 +36,7 @@
     </div>
     <div class="pb-20">
         <table class="data-table table hover nowrap table-responsive">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <th scope="col">Image</th>
                     <th scope="col">Name</th>

@@ -42,6 +42,7 @@ class UserController extends Controller
         $users->prefix = $request->input('prefix');
         $users->user_type_id = $request->input('user_type_id');
         $users->salary = $request->input('salary');
+        $users->skill = $request->input('skill');
 
         $role = Role::findOrFail($request->role);
         $users->assignRole($role->name);
@@ -88,6 +89,7 @@ class UserController extends Controller
         $user->prefix = $request->input('prefix');
         $user->user_type_id = $request->input('user_type_id');
         $user->salary = $request->input('salary');
+        $user->skill = $request->input('skill');
 
         $role = Role::findOrFail($request->role);
         $user->assignRole($role->name);

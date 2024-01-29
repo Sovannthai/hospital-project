@@ -28,7 +28,7 @@
 <div class="card">
     <div class="card-body">
         <table class="data-table table hover nowrap">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <th>Type</th>
                     <th>Status</th>

@@ -3,11 +3,12 @@
 
     .website{
         /* border-radius: 15px 0 15px 0; */
+        font-size: 40px;
         transition: 0.5s;
     }
     .website:hover{
-        transform: 1.5s;
-        transform: translateY(-10px);
+        transform: 1s;
+        transform: translateY(-5px);
     }
 </style>
 <div class="header">
@@ -90,19 +91,19 @@
             </div>
         </div> --}}
         @auth
-            <div><a href="{{ route('frontend.home') }}" class="btn btn-outline-primary mt-3 website">Go to Website</a></div>
+            <div><a href="{{ route('frontend.home') }}"><i class="icon-copy fa fa-globe website mt-3 mr-3" aria-hidden="true"></i></a></div>
         <div class="user-info-dropdown">
             <div class="dropdown">
                 <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                     <span class="user-icon">
-                        <img src="{{ asset('uploads/users/2023-11-06-65486f4c69e1d.png') }}" alt />
+                        <img src="{{ asset('uploads/users/'.auth()->user()->image) }}" style="height:100%;width:100%;object-fit:cover;"/>
                     </span>
                     <span class="user-name">{{ auth()->user()->name }}</span>
                 </a>
                 @endauth
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                    {{-- <a class="dropdown-item" href="#"><i class="dw dw-user1"></i>
-                        Profile</a> --}}
+                    <a class="dropdown-item" href="{{ route('profile.edit',['id'=>auth()->user()->id]) }}"><i class="dw dw-user1"></i>
+                        Profile</a>
                     {{-- <a class="dropdown-item" href="#"><i class="dw dw-settings2"></i>
                         Setting</a> --}}
                     {{-- <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a> --}}

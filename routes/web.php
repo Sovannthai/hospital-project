@@ -10,15 +10,20 @@ use App\Http\Controllers\UsertypeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\BlogCategoryController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EmployeegroupController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\LaboratoryController;
 use App\Http\Controllers\ProductcategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UnitController;
+use App\Models\Blog;
+use App\Models\BlogCategory;
 use App\Models\Diseas;
 use App\Models\Product;
 use App\Models\User;
@@ -38,7 +43,13 @@ Route::get('/', function () {
     $diseases = Diseas::all();
     $products = Product::where('status', 1)->get();
     $doctors = User::with('usertype')->where('user_type_id', 1)->get();
-    return view('frontend.home.index', compact('diseases', 'doctors', 'products'));
+    $blogs = Blog::select("*")
+        ->offset(0)
+        ->limit(3)
+        ->get();
+    $user = User::all();
+    $blog_categories = BlogCategory::all();
+    return view('frontend.home.index', compact('diseases', 'doctors', 'products', 'blogs', 'blog_categories', 'user'));
 });
 //Frontent
 Route::get('frontend', [FrontendController::class, 'index'])->name('frontend.index');
@@ -47,8 +58,10 @@ Route::get('front/about-us', [FrontendController::class, 'aboutus'])->name('fron
 Route::get('front/doctor', [FrontendController::class, 'doctor'])->name('frontend.doctor');
 Route::get('front/blog', [FrontendController::class, 'blog'])->name('frontend.blog');
 Route::get('front/contact', [FrontendController::class, 'contact'])->name('frontend.contact');
-Route::post('/front/contact',[FrontendController::class,'contactStore'])->name('frontend.add_contact');
+Route::post('/front/contact', [FrontendController::class, 'contactStore'])->name('frontend.add_contact');
 Route::get('front/product', [FrontendController::class, 'product'])->name('frontend.product');
+Route::get('front/profile/edit/{id}', [FrontendController::class, 'profile'])->name('frontpf.edit');
+Route::put('front/update/{id}',[FrontendController::class,'updatePf'])->name('frontpf.update');
 Route::get('login', function () {
     return view('auth.login');
 });
@@ -61,7 +74,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/store_permission', 'StoreRole')->name('store_role');
         Route::get('/edit_role/{id}', 'EditRole')->name('edit_role');
         Route::put('/update_role/{id}', 'UpdateRole')->name('update_role');
-        Route::delete('/delete/{id}','DestroyRole')->name('destroy_role');
+        Route::delete('/delete/{id}', 'DestroyRole')->name('destroy_role');
     });
     Route::get('/home', [DashboardController::class, 'index'])->name('home');
     Route::resource('/laboratory', LaboratoryController::class);
@@ -75,6 +88,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('usermanagement.user.edit');
     Route::put('/user/update/{id}', [UserController::class, 'update'])->name('usermanagement.user.update');
     Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('usermanagement.user.destroy');
+    //Profile User
+    Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
     //Diseas
     Route::get('/diseas', [DiseasController::class, 'index'])->name('diseas.index');
     Route::post('/diseas', [DiseasController::class, 'store'])->name('diseas.store');
@@ -106,5 +122,15 @@ Route::group(['middleware' => ['auth']], function () {
     //Test Route
     // Route::resource('staff', StaffController::class);
     //Contact
-    Route::get('contact',[ContactController::class,'index'])->name('contact.index');
+    Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+    //Blog
+    // Route::get('blog',[BlogController::class,'index'])->name('blog.index');
+    // Route::get('blog',[BlogController::class,'create'])->name('blog.create');
+    // Route::post('blog',[BlogController::class,'store'])->name('blog.store');
+    // Route::get('blog/edit/{id}',[BlogController::class,'edit'])->name('blog.edit');
+    // Route::put('blog/update/{id}',[BlogController::class,'update'])->name('blog.update');
+    // Route::delete('blog/delete/{id}',[BlogController::class,'destroy'])->name('blog.destroy');
+    Route::resource('/blog', BlogController::class);
+    //Blog Category
+    Route::resource('blog-category', BlogCategoryController::class);
 });

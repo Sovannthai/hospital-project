@@ -108,10 +108,23 @@
                         <span class="icon-copy fa fa-users" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Staff</span>
                     </a>
                 </li> --}}
+                <li class="dropdown">
+                    @if (auth()->user()->can('view.blog'))
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="icon-copy dw dw-tablet"></span><span class="mtext" style="position: relative; left: -20px;">Blog</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('blog.index') }}" class="@if (request()->routeIs('blog.index'))active @endif"><span class="icon-copy fa fa-list" aria-hidden="true"></span>List Blog</a></li>
+                        <li><a href="{{ route('blog-category.index') }}" class="@if (request()->routeIs('blog-category.index'))active @endif"><span class="icon-copy bi bi-tags-fill"></span>Category</a></li>
+                    </ul>
+                    @endif
+                </li>
                 <li>
+                    @if (auth()->user()->can('view.contact'))
                     <a href="{{ route('contact.index') }}" class="dropdown-toggle no-arrow @if (request()->routeIs('contact.index'))active @endif">
                         <span class="icon-copy dw dw-phone-call" aria-hidden="true"></span><span class="mtext" style="position: relative; left: -20px;">Contact</span>
                     </a>
+                    @endif
                 </li>
             </ul>
         </div>

@@ -3,15 +3,15 @@
         border-radius: 0;
         height: 35px;
     }
+
 </style>
-<div class="modal fade" id="create" data-backdrop="static" data-keyboard="false" tabindex="-1"
-      aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="staticBackdropLabel">Cerate Appointment</h5>
-              </div>
-              <div class="modal-body">
+<div class="modal fade" id="create" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Cerate Appointment</h5>
+            </div>
+            <div class="modal-body">
                 <form action="{{ route('appointment.store') }}" method="POST" id="appointmentForm">
                     @csrf
                     <div class="row">
@@ -46,7 +46,7 @@
                     <div class="row">
                         <div class="form-group col-4">
                             <label for="">Appointment Date</label>
-                            <input type="datetime-local" class="form-control" name="appointment_date">
+                            <input class="form-control datetimepicker" type="text" name="appointment_date" placeholder="Choose Date anf time">
                         </div>
                         <div class="form-group col-4">
                             <label for="">Status</label>
@@ -70,12 +70,12 @@
                     </div>
                     <div>
                         <span>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"  style="position: relative;left:630px;">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="position: relative;left:630px;">Close</button>
                         </span>
                         <button type="submit" class="btn btn-primary" style="position: relative;left:635px;">Save</button>
                     </div>
                 </form>
-              </div>
-          </div>
-      </div>
-  </div>
+            </div>
+        </div>
+    </div>
+</div>

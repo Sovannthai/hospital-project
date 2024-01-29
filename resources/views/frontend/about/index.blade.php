@@ -86,7 +86,7 @@
                         </div>
                         <div class="body">
                             <p class="text-xl mb-0">{{ $doctor->name }}</p>
-                            <span class="text-sm text-grey">Cardiology</span>
+                            <span class="text-sm text-grey">Skill: {{ $doctor->skill }}</span>
                         </div>
                     </div>
                     @endforeach

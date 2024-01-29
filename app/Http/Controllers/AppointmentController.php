@@ -53,9 +53,9 @@ class AppointmentController extends Controller
             $appointment->labo_id = $request->labo_id;
             $appointment->created_by = auth()->user()->id;
             $appointment->save();
-
             return redirect()->route('appointment.index')->with('store', 'Appointment created successfully!');
         } catch (\Exception $e) {
+            // dd($appointment);
             return redirect()->back()->with('error', 'Failed to create appointment. Please try again.');
         }
     }

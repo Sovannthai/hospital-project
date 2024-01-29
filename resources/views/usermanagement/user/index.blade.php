@@ -36,26 +36,28 @@
 <div class="card">
     <div class="card-body">
         <table class="data-table table hover nowrap ">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
-                    <th></th>
+                    <th>Avatar</th>
                     <th>Prefix</th>
                     <th>Name</th>
                     <th>Role</th>
                     <th>User Type</th>
                     <th>Salary</th>
+                    <th>Skill</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($users as $user)
                 <tr>
-                    <td><img src="{{ asset('uploads/users/'.$user->image) }}" alt="" style="width: 65px; height:70px;"></td>
+                    <td><img src="{{ asset('uploads/users/'.$user->image) }}" alt="" style="width: 75px; height:80px;"></td>
                     <td>{{ @$user->prefix }}</td>
                     <td>{{@$user->name }}</td>
                     <td>{{ @$user->roles->first()->name }}</td>
                     <td>{{ @$user->usertype->type_name }}</td>
                     <td>$ {{ @$user->salary }}</td>
+                    <td>{{ $user->skill }}</td>
                     <td>
                         <div class="d-flex">
                             @if (auth()->user()->can('edit.user'))

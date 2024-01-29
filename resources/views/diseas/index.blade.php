@@ -30,7 +30,7 @@
         </div>
         <div class="pb-20">
             <table class="data-table table hover nowrap">
-                <thead>
+                <thead class="table-secondary">
                     <tr>
                         <th>Name</th>
                         <th>Action</th>

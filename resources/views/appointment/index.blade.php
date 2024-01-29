@@ -38,7 +38,7 @@
     </div>
     <div class="pb-20">
         <table class="data-table table hover  nowrap">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     {{-- <th scope="col">No.</th> --}}
                     <th scope="col">Pataint Name</th>

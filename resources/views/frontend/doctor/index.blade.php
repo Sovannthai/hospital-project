@@ -42,7 +42,7 @@
                             </div>
                             <div class="body">
                                 <p class="text-xl mb-0">{{ $doctor->name }}</p>
-                                <span class="text-sm text-grey">Cardiology</span>
+                                <span class="text-sm text-grey">Skill: {{ $doctor->skill }}</span>
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
 <div class="page-section">
     <div class="container">
         <h1 class="text-center wow fadeInUp">Make an Appointment</h1>
-
+        @auth
         <form class="main-form">
             <div class="row mt-5 ">
                 <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
@@ -88,6 +88,7 @@
 
             <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Submit Request</button>
         </form>
+        @endauth
     </div> <!-- .container -->
 </div> <!-- .page-section -->
 @endsection

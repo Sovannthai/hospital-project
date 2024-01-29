@@ -47,7 +47,7 @@
                     <div class="row">
                         <div class="form-group col-4">
                             <label for="">Appointment Date</label>
-                            <input type="datetime-local" class="form-control" name="appointment_date" value="{{ $appointment->appointment_date }}">
+                            <input class="form-control datetimepicker" type="text" name="appointment_date" value="{{ $appointment->appointment_date }}">
                         </div>
                         <div class="form-group col-4">
                             <label for="">Status</label>
@@ -64,14 +64,14 @@
                             <select name="labo_id" id="" class="form-control" style="width: 100%; height: 35px">
                                 <option value="">Select laboratory</option>
                                 @foreach ($laboratories as $laboratory)
-                                <option value="{{ $laboratory->id }}"{{ $laboratory->id == $appointment->labo_id ?'selected':'' }}>{{ $laboratory->name }}</option>
+                                <option value="{{ $laboratory->id }}" {{ $laboratory->id == $appointment->labo_id ?'selected':'' }}>{{ $laboratory->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div>
                         <span>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"  style="position: relative;left:630px;">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="position: relative;left:630px;">Close</button>
                         </span>
                         <button type="submit" class="btn btn-primary" style="position: relative;left:635px;">Save</button>
                     </div>

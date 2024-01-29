@@ -3242,7 +3242,8 @@
 }
 
 .bi-house::before {
-    content: "\f425"
+    content: "\f425";
+    /* font-size: 20px; */
 }
 
 .bi-hr::before {
@@ -9302,7 +9303,10 @@
 }
 
 .dw-tablet:before {
-    content: "\eb49"
+    content: "\eb49";
+    font-size: 20px;
+    position: relative;
+    left: -45px;
 }
 
 .dw-personal-computer:before {

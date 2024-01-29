@@ -1385,7 +1385,8 @@ a.text-dark:hover, a.text-dark:focus {
 .card-blog {
   position: relative;
   display: block;
-  max-width: 264px;
+  max-width: 364px;
+  height: 280px;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 4px;

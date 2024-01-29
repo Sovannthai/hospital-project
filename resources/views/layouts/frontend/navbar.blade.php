@@ -1,5 +1,5 @@
 <!-- Back to top button -->
-<div class="topbar">
+{{-- <div class="topbar">
     <div class="container">
         <div class="row">
             <div class="col-sm-8 text-sm">
@@ -19,7 +19,7 @@
 </div>
 </div> <!-- .row -->
 </div> <!-- .container -->
-</div> <!-- .topbar -->
+</div> <!-- .topbar --> --}}
 <style>
     .nav-item {
         transition: 0.5s;
@@ -103,13 +103,12 @@
                 </li>
                 <li class="nav-item">
                     @guest
-                    <a class="btn btn-primary ml-lg-3" href="" data-toggle="modal" data-target="#login">Login</a>
-                    @include('frontend.auth.login')
+                    <a class="btn btn-primary ml-lg-3 btn-modal" href="{{ route('login') }}">Login</a>
                     <a class="btn btn-primary ml-lg-3" href="{{ route('register') }}">Register</a>
                     @else
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <a class="btn btn-primary ml-lg-3" href="">Profile</a>
+                        <a class="btn btn-primary ml-lg-3" href="{{ route('frontpf.edit',['id'=>auth()->user()->id]) }}">Profile</a>
                         <button type="submit" class="btn btn-primary ml-lg-3">Logout</button>
                     </form>
                     @endguest
